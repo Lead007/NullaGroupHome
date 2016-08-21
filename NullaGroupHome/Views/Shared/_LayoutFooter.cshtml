@@ -3,15 +3,38 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
 </head>
 <body>
-@Styles.Render("~/Content/bootstrap.min.css");
-    @Scripts.Render("~/Scripts/jquery-3.1.0.min.js");
-    @Scripts.Render("~/Scripts/bootstrap.min.js");
-<div>
-    @RenderBody()
-
-</div>
+    <!--框架-->
+    <link rel="stylesheet" href="/Content/bootstrap.min.css" />
+    <script src="/Scripts/jquery-3.1.0.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <!--自己的css和js-->
+    <script src="/Scripts/_MyScripts/_Global/TitleHelper.js"></script>
+    <script src="/Scripts/_MyScripts/_Global/Members.js"></script>
+    <link rel="stylesheet" href="/Content/_MyContent/_Global/Footer.css" />
+    <link rel="stylesheet" href="/Content/_MyContent/_Global/Hr.css" />
+    <link rel="stylesheet" href="/Content/_MyContent/_Global/Navbar.css" />
+    <link rel="stylesheet" href="/Content/_MyContent/_Global/Text.css" />
+    <!--主体-->
+    <div>
+        @RenderBody()
+        <div class="container" style="margin-top: 100px;">
+            <div class="row">
+                <div class="col-sm-12" style="display: inline;">
+                    <hr />
+                    <span>&copy;</span>
+                    <p class="nulla-footer">
+                        <script>
+                            var date = new Date();
+                            $(".nulla-footer").html(date.getFullYear() + getTitle());
+                        </script>
+                    </p>
+                    <span>&nbsp;&nbsp;</span>
+                    @Html.ActionLink("关于我们", "Index", "About")
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
