@@ -1,3 +1,3 @@
-﻿function membersCount() {
-    document.write("72");
-}
+﻿$.get("/Global/MembersCount", function (response) {
+    $(".members-count").text(response);
+});

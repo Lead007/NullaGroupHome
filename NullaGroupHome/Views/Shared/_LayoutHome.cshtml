@@ -4,7 +4,7 @@
 
 <!--设置标题-->
 <script>
-    setTitle("@ViewBag.Title");
+    setTitle("@(ViewBag.Title)");
 </script>
 <!--主体-->
 <div class="container">
@@ -23,15 +23,15 @@
                         <img src="/Content/_MyImages/_Global/Nulla.jpg" height="100px" width="150px" alt="NullaDev" />
                     </a>
                 </li>
-                <li id="MenuHome">@Html.ActionLink("主 页", "Index", "Home", new { style = "margin-bottom: 10px;" })</li>
-                <li id="MenuProduct">@Html.ActionLink("作 品", "Index", "Home", new { style = "margin-bottom: 10px;" })</li>
+                <li id="MenuHome">@Html.ActionLink("主 页", "", "Home", null, new { style = "margin-bottom: 10px;" })</li>
+                <li id="MenuProduct">@Html.ActionLink("作 品", "", "Home", null, new { style = "margin-bottom: 10px;" })</li>
                 <li id="MenuAbout">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">关 于<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li>@Html.ActionLink("简介", "Index", "About")</li>
-                        <li><a href="/About/Members.aspx">成员</a></li>
-                        <li><a href="/About/EmotionIcon.aspx">表情包</a></li>
-                        <li><a href="/About/Contact.aspx">联系方式</a></li>
+                        <li>@Html.ActionLink("成员", "Members", "About")</li>
+                        <li>@Html.ActionLink("表情包","EmotionIcon","About")</li>
+                        <li>@Html.ActionLink("联系方式", "Contact", "About")</li>
                     </ul>
                 </li>
             </ul>

@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "原创表情包";
+    Layout = "~/Views/Shared/_LayoutAbout.cshtml";
+}
+<div class="Text">
+    <h3>组长的原创表情包集锦</h3>
+    <hr />
+    <p>众所周知，组长<script> writeMemberUriByIndex(0);</script>对素材的绘制非常美(ling)观(hun)。组长本人显然也明白这一点，因此倾情为大家奉献了许多灵魂化的仿制表情包。</p>
+    <p><del>显然，组长在这方面的执行力远大于填坑时的执行力。</del></p>
+    <div style="text-align: center">
+        <table class="table table-bordered table-hover">
+            <thead class="table-head">
+                <tr>
+                    <th>原表情</th>
+                    <th>原创表情</th>
+                </tr>
+            </thead>
+            <tbody>
+            @{
+                var emotions = Directory.GetFiles(this.Server.MapPath("/Content/_MyImage/About/Emotions/Emotion")).OrderBy(File.GetCreationTime).Select(FileHelper.GetFullFileName);
+                foreach (var emotion in emotions)
+                {
+                    <tr>
+                        <td>
+                            @if (File.Exists(this.Server.MapPath($"/About/Emotions/Template/{emotion}")))
+                            {
+                                <img src="/Content/_MyImages/About/Emotions/Template/@emotion"/>
+                            }
+                            else
+                            {
+                                <p style="text-align: center;">找不到原表情</p>
+                            }
+                        </td>
+                        <td>
+                            <img src="/Content/_MyImages/About/Emotions/Emotion/@emotion"/>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+        <br />
+        <p>你也可以在这里下载<a>全套表情压缩包</a>。</p>
+    </div>
+</div>
+

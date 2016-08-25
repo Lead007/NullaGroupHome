@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "成员";
+    Layout = "~/Views/Shared/_LayoutAbout.cshtml";
+}
+
+<!--自己的css和js-->
+<script src="/Scripts/_MyScripts/_Global/ConstFields.js"></script>
+<link rel="stylesheet" href="/Content/_MyContent/About/Members.css"/>
+<!--主体-->
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div>
+                <h3>成员</h3>
+                <hr />
+                <style>
+                    p.member-information {
+                        font-size: 18px;
+                    }
+                </style>
+                <p class="member-information">
+                    现在群内已经有了<span class="members-count"></span>名成员，主要活跃成员依技能方向被分为女装组、美工组、援交组、黑历史组、吐槽组等多个分小组。
+                </p>
+                <p class="member-information">由于成员变动较为频繁，在此不更新，请自行加群查看。</p>
+            </div>
+        </div>
+        <div class="col-sm-5 col-sm-push-1">
+            <div>
+                <h3>管理员</h3>
+                <hr />
+                <div id="member">
+                    <ul>
+                        <!--生成成员-->
+                        @foreach (var name in Enum.GetNames(typeof(Administrator)))
+                        {
+                            <li>
+                                <a href="/About/Introduction?name=@name">
+                                    <img src="/Content/_MyImages/About/Administrators/@(name).jpg" width="70px" height="70px"/>
+                                    <br />
+                                    <p>@(name + (name == ConstFields.Leader ? "(组长)" : string.Empty))</p>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                    <span style="font-size: 20px;">共7名。</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -3,48 +3,42 @@
 
 @{
     ViewBag.Title = "关于";
-    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    Layout = "~/Views/Shared/_LayoutAbout.cshtml";
 }
 
 <!--自己的css-->
 <link rel="stylesheet" href="/Content/_MyContent/About/BuildDays.css" />
 <link rel="stylesheet" href="/Content/_MyContent/About/TimeLineStyle.css" />
 <!--主体-->
-<div class="container">
-    <div class="row">
-        <div class="col-sm-10 col-sm-push-1">
-            <div class="Text">
-                <h3><strong>小组简介</strong></h3>
-                <hr />
-                <p>Nulla小组是国内最业余的业余Minecraft Mod制作组。小组由组长 @MemberUri.GetMemberUri(Html, Administrator.小鸟小姐)于2014年12月14日在北京创建。</p>
-                <p>时至今天，Nulla小组已建立了&nbsp;<strong class="days">@((DateTime.Now - ConstFields.BuildTime).Days)</strong>&nbsp;天。</p>
-                <br />
-                <h3><strong>一路归西（大事记）</strong></h3>
-                <hr/>
-                <!--显示TimeLine.json的时间线信息-->
-                <section id="cd-timeline" class="cd-container" style="padding-left: 15px; padding-right: 15px;">
-                    @{
-                        var events = new JavaScriptSerializer().DeserializeFile<TimeLine>(this.Server.MapPath("/App_Data/About/TimeLine.json")).Events;
-                        for (var i = 0; i < events.Length; i++)
-                        {
-                            foreach (var ad in Enum.GetValues(typeof(Administrator)).Cast<Administrator>())
-                            {
-                                events[i].Event = events[i].Event.Replace(ad.ToString(),MemberUri.GetMemberUri(Html, ad));
-                            }
-                            <div class="cd-timeline-block">
-                                <div class="cd-timeline-img cd-picture">
-                                    <img src="/Content/_MyImages/About/TimeLineNodes/Node@(i&1).jpg" width="24px" height="24px" />
-                                </div>
-                                <div class="cd-timeline-content">
-                                    <p>@Html.Raw(events[i].Event)</p>
-                                    <span class="cd-date">@events[i].Date</span>
-                                </div>
-                            </div>
-                        }
-                    }
-                </section>
-                <p style="text-align: center; font-family: 'Comic Sans MS';">To be continue . . .</p>
-            </div>
-        </div>
-    </div>
+<div class="Text">
+    <h3><strong>小组简介</strong></h3>
+    <hr />
+    <p>Nulla小组是国内最业余的业余Minecraft Mod制作组。小组由组长@(MemberUri.GetMemberUri(Html, Administrator.小鸟小姐))于2014年12月14日在北京创建。</p>
+    <p>时至今天，Nulla小组已建立了&nbsp;<strong class="days">@((DateTime.Now - ConstFields.BuildTime).Days)</strong>&nbsp;天。</p>
+    <br />
+    <h3><strong>一路归西（大事记）</strong></h3>
+    <hr />
+    <!--显示TimeLine.json的时间线信息-->
+    <section id="cd-timeline" class="cd-container" style="padding-left: 15px; padding-right: 15px;">
+        @{
+            var events = new JavaScriptSerializer().DeserializeFile<TimeLine>(this.Server.MapPath("/App_Data/About/TimeLine.json")).Events;
+            for (var i = 0; i < events.Length; i++)
+            {
+                foreach (var ad in Enum.GetValues(typeof(Administrator)).Cast<Administrator>())
+                {
+                    events[i].Event = events[i].Event.Replace(ad.ToString(), MemberUri.GetMemberUriString(Html, ad));
+                }
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-picture">
+                        <img src="/Content/_MyImages/About/TimeLineNodes/Node@(i&1).jpg" width="24px" height="24px" />
+                    </div>
+                    <div class="cd-timeline-content">
+                        <p>@Html.Raw(events[i].Event)</p>
+                        <span class="cd-date">@events[i].Date</span>
+                    </div>
+                </div>
+            }
+        }
+    </section>
+    <p style="text-align: center; font-family: 'Comic Sans MS';">To be continue . . .</p>
 </div>
