@@ -24,13 +24,13 @@
                     </a>
                 </li>
                 <li id="MenuHome">@Html.ActionLink("主 页", "", "Home", null, new { style = "margin-bottom: 10px;" })</li>
-                <li id="MenuProduct">@Html.ActionLink("作 品", "", "Home", null, new { style = "margin-bottom: 10px;" })</li>
+                <li id="MenuProduct">@Html.ActionLink("作 品", "Index", "Home", new { area = "Product" }, new { style = "margin-bottom: 10px;" })</li>
                 <li id="MenuAbout">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">关 于<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li>@Html.ActionLink("简介", "Index", "About")</li>
                         <li>@Html.ActionLink("成员", "Members", "About")</li>
-                        <li>@Html.ActionLink("表情包","EmotionIcon","About")</li>
+                        <li>@Html.ActionLink("表情包", "EmotionIcon", "About")</li>
                         <li>@Html.ActionLink("联系方式", "Contact", "About")</li>
                     </ul>
                 </li>

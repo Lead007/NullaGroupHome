@@ -1,4 +1,7 @@
-﻿
+﻿<!--自己的css-->
+<link rel="stylesheet" href="/Content/_MyContent/_Global/TableHead.css"/>
+<link rel="stylesheet" href="/Content/_MyContent/About/Emphasize.css"/>
+<!--主体-->
 @{
     ViewBag.Title = "原创表情包";
     Layout = "~/Views/Shared/_LayoutAbout.cshtml";
@@ -18,14 +21,18 @@
             </thead>
             <tbody>
             @{
-                var emotions = Directory.GetFiles(this.Server.MapPath("/Content/_MyImage/About/Emotions/Emotion")).OrderBy(File.GetCreationTime).Select(FileHelper.GetFullFileName);
+                var emotions = Directory.GetFiles(this.Server.MapPath("/Content/_MyImages/About/Emotions/Emotion")).OrderBy(File.GetCreationTime).Select(FileHelper.GetFullFileName);
                 foreach (var emotion in emotions)
                 {
                     <tr>
                         <td>
-                            @if (File.Exists(this.Server.MapPath($"/About/Emotions/Template/{emotion}")))
+                            @if (File.Exists(this.Server.MapPath($"/Content/_MyImages/About/Emotions/Template/{emotion}")))
                             {
-                                <img src="/Content/_MyImages/About/Emotions/Template/@emotion"/>
+                                <img src="/Content/_MyImages/About/Emotions/Template/@emotion" width="100px" height="100px"/>
+                            }
+                            else if (File.Exists(this.Server.MapPath($"/Content/_MyImages/About/Emotions/Template/{emotion}".Replace(".jpg", ".gif"))))
+                            {
+                                <img src="/Content/_MyImages/About/Emotions/Template/@emotion.Replace(".jpg",".gif")" width="100px" height="100px"/>
                             }
                             else
                             {
@@ -33,7 +40,7 @@
                             }
                         </td>
                         <td>
-                            <img src="/Content/_MyImages/About/Emotions/Emotion/@emotion"/>
+                            <img src="/Content/_MyImages/About/Emotions/Emotion/@emotion" width="100px" height="100px"/>
                         </td>
                     </tr>
                 }
@@ -42,6 +49,7 @@
         </table>
         <br />
         <p>你也可以在这里下载<a>全套表情压缩包</a>。</p>
+        <p class="emphasize">本表情包由组长@(MemberUri.GetMemberUri(Html,Administrator.小鸟小姐))原创，请勿随意转载！</p>
     </div>
 </div>
 

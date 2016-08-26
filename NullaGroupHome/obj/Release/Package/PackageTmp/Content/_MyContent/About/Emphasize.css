@@ -1,0 +1,7 @@
+﻿/*联系方式页的强调样式*/
+.emphasize {
+    font-weight: bold;
+    font-size: large;
+    font-family: "黑体";
+    color: red;
+}

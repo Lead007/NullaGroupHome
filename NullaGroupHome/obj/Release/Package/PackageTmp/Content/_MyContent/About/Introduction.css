@@ -1,0 +1,18 @@
+﻿/*成员介绍的样式*/
+.introduction {
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+    .introduction > p {
+        line-height: 25px;
+        white-space: pre-wrap;
+        font-family: "仿宋";
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+
+    .introduction > span {
+        font-size: 20px;
+        line-height: 25px;
+    }

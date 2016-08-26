@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = "~/Areas/Product/Views/Shared/_LayoutProduct.cshtml";
+
+}
+
+<script>
+    setBetterHUDTitle("@ViewBag.Title");
+</script>
+<div>
+    @RenderBody()
+</div>
+
+@section Navbar
+{
+    <li>
+        <a href="/Product/BetterHUD" target="_blank">
+            <img src="/Areas/Product/Areas/BetterHUD/Content/_Images/Icon.jpg" height="80px" width="120px" />
+        </a>
+    </li>
+    <li id="MenuHome"><a href="/Product/BetterHUD">简 介</a></li>
+    <li id="MenuDownload"><a href="/Product/Download.aspx?modname=KeyCraft">下 载</a></li>
+    <li id="MenuImage"><a href="/Product/Images.aspx?modname=KeyCraft">图 片</a></li>
+}

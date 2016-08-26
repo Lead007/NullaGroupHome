@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutFooter.cshtml";
+}
+
+<!--设置标题-->
+<script>
+    setTitle("@(ViewBag.Title)");
+</script>
+<!--主体-->
+<div class="container">
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" style="font-size: 30px;">
+                <li>
+                    <a href="/" target="_blank">
+                        <img src="/Content/_MyImages/_Global/Nulla.jpg" height="100px" width="150px" alt="NullaDev" />
+                    </a>
+                </li>
+                <li id="MenuHome">@Html.ActionLink("主 页", "", "Home", null, new { style = "margin-bottom: 10px;" })</li>
+                <li id="MenuProduct">@Html.ActionLink("作 品", "Index", "Home", new { area = "Product" }, new { style = "margin-bottom: 10px;" })</li>
+                <li id="MenuAbout">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">关 于<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("简介", "Index", "About")</li>
+                        <li>@Html.ActionLink("成员", "Members", "About")</li>
+                        <li>@Html.ActionLink("表情包", "EmotionIcon", "About")</li>
+                        <li>@Html.ActionLink("联系方式", "Contact", "About")</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+@RenderBody()

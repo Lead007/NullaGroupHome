@@ -1,0 +1,86 @@
+﻿@using System.Text.RegularExpressions
+@using System.Web.Script.Serialization
+@using NullaGroupHome.About
+
+@{
+    ViewBag.Title = "成员详情";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<!--自己的css-->
+<link rel="stylesheet" href="/Content/_MyContent/About/Introduction.css"/>
+<!--主体-->
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-push-1 col-sm-10">
+            @{
+                var name = this.Request.Params["name"];
+                var isParamLegal = Enum.GetNames(typeof (Administrator)).Contains(name);
+            }
+            <h3>
+                @if (isParamLegal)
+                {
+                    <img src="/Content/_MyImages/About/Administrators/@(name).jpg" width="100px" height="100px"/>
+                    var aInfo = new JavaScriptSerializer().DeserializeFile<AdministratorInfos>(this.Server.MapPath("/App_Data/About/AdministratorInfo.json")).Administrators.FirstOrDefault(a => a.Name == name);
+                    <span>&nbsp;&nbsp;&nbsp;@aInfo</span>
+                }
+            </h3>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-push-1 col-sm-10">
+            <div class="introduction intro-text-body">
+                @if (isParamLegal)
+                {
+                    string text;
+                    using (var reader = new StreamReader(this.Server.MapPath($"/App_Data/About/Introductions/{name}.txt")))
+                    {
+                        text = reader.ReadToEnd();
+                    }
+                    text = text.TrimStart('\n', '\t', ' ');
+                    text = text.TrimEnd('\n', '\t', ' ');
+                    var matches = Regex.Matches(text, @"(\r\n){3,}");
+                    text = matches.OfType<Match>()
+                        .Select(m => m.Groups[0].Value)
+                        .OrderByDescending(s => s.Length)
+                        .Aggregate(text, (current, s) => text.Replace(s, s.Replace("\r\n", "<br/>")));
+                    text = text.Replace("\r\n\r\n", "</p><p>");
+                    text = text.Replace("\r\n", "<br/>");
+                    text = text.Insert(0, "<p>");
+                    text = text.Insert(text.Length, "</p>");
+                    text = text.Replace("<p><span>", "<span>");
+                    text = text.Replace("</span></p>", "</span>");
+                    text = Enum.GetNames(typeof (Administrator))
+                        .Where(n => n != name)
+                        .Aggregate(text,
+                            (current, n) => current.Replace(n, $"<script> WriteMemberUri(\"{n}\");</script>"));
+                    @Html.Raw(text)
+                }
+                else
+                {
+                    <div style="text-align: center; padding-top: 60px; padding-bottom: 60px;">
+                        <h1>
+                            <img src="/Content/_MyImages/About/警告.jpg" height="40px" width="40px"/>
+                            <span>&nbsp;似乎出了一点问题...</span>
+                        </h1>
+                        <br/>
+                        <h4>找不到&nbsp;@name&nbsp;的介绍。</h4>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-push-8 col-sm-2">
+            @Html.ActionLink("回到群成员页","Members","About",null,new {@class= "btn btn-primary" });
+        </div>
+    </div>
+</div>
+
+
+
+

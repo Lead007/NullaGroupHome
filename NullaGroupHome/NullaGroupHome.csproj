@@ -96,6 +96,21 @@
     <Content Include="App_Data\About\Introductions\女仆长的PAD.txt" />
     <Content Include="App_Data\About\Introductions\小大圣.txt" />
     <Content Include="App_Data\About\Introductions\小鸟小姐.txt" />
+    <Content Include="Areas\Product\Content\Image\BetterHUD\Icon.jpg" />
+    <Content Include="Areas\Product\Content\Image\KeyCraft\Icon.jpg" />
+    <Content Include="Areas\Product\Content\_Content\ProductList.css" />
+    <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 1.4.3.jar" />
+    <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 2.1.2.jar" />
+    <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 2.4.3.jar" />
+    <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 3.1.1.jar" />
+    <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 3.1.1γ.jar" />
+    <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 3.1.3.jar" />
+    <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 3.1.3β.jar" />
+    <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 3.1.3γ.jar" />
+    <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 3.4.3.jar" />
+    <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Pre 1.0.jar" />
+    <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Pre 1.0β.jar" />
+    <Content Include="Areas\Product\Scripts\DownloadTableHead.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -105,10 +120,12 @@
     <Content Include="Content\_MyContent\About\Introduction.css" />
     <Content Include="Content\_MyContent\About\Members.css" />
     <Content Include="Content\_MyContent\About\TimeLineStyle.css" />
+    <Content Include="Content\_MyContent\_Global\Content.css" />
     <Content Include="Content\_MyContent\_Global\Footer.css" />
     <Content Include="Content\_MyContent\_Global\Head.css" />
     <Content Include="Content\_MyContent\_Global\Hr.css" />
     <Content Include="Content\_MyContent\_Global\Navbar.css" />
+    <Content Include="Content\_MyContent\_Global\TableHead.css" />
     <Content Include="Content\_MyContent\_Global\Text.css" />
     <Content Include="Content\_MyImages\About\Administrators\NavyFlash.jpg" />
     <Content Include="Content\_MyImages\About\Administrators\PrimeBlade.jpg" />
@@ -117,6 +134,46 @@
     <Content Include="Content\_MyImages\About\Administrators\不穿女装的玛秾.jpg" />
     <Content Include="Content\_MyImages\About\Administrators\女仆长的PAD.jpg" />
     <Content Include="Content\_MyImages\About\Administrators\小大圣.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\001.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\002.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\003.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\004.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\005.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\006.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\007.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\008.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\009.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\010.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\011.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\012.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\013.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\014.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\015.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\016.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\017.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\018.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\019.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\020.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\021.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\022.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Emotion\023.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\001.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\004.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\005.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\006.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\007.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\010.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\011.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\013.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\014.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\016.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\017.gif" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\018.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\019.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\020.gif" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\021.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\022.jpg" />
+    <Content Include="Content\_MyImages\About\Emotions\Template\023.jpg" />
     <Content Include="Content\_MyImages\About\TimeLineNodes\Node0.jpg" />
     <Content Include="Content\_MyImages\About\TimeLineNodes\Node1.jpg" />
     <Content Include="Content\_MyImages\About\警告.jpg" />
@@ -136,6 +193,13 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="App_Data\About\TimeLine.json" />
     <Content Include="App_Data\About\AdministratorInfo.json" />
+    <Content Include="Areas\Product\Views\web.config" />
+    <Content Include="Areas\Product\Views\Shared\_LayoutProduct.cshtml" />
+    <Content Include="Areas\Product\Views\Shared\Product\_LayoutBetterHUD.cshtml" />
+    <Content Include="Areas\Product\Views\Shared\Product\_LayoutKeyCraft.cshtml" />
+    <Content Include="Areas\Product\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Product\Views\Home\Download.cshtml" />
+    <None Include="Properties\PublishProfiles\NullaConfig.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -151,6 +215,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Product\Codes\Comparer.cs" />
+    <Compile Include="Areas\Product\Codes\ModFile.cs" />
+    <Compile Include="Areas\Product\Codes\Version.cs" />
+    <Compile Include="Areas\Product\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Product\Controllers\KeyCraftController.cs" />
+    <Compile Include="Areas\Product\ProductAreaRegistration.cs" />
     <Compile Include="Codes\FileHelper.cs" />
     <Compile Include="Codes\MemberUri.cs" />
     <Compile Include="Codes\ConstFields.cs" />
@@ -162,7 +232,6 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\GlobalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,14 +264,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\" />
-    <Folder Include="Content\_MyImages\About\Emotions\Emotion\" />
-    <Folder Include="Content\_MyImages\About\Emotions\Template\" />
-    <Folder Include="Content\_MyImages\Product\" />
+    <Folder Include="Areas\Product\Content\Image\BetterHUD\_Images\" />
+    <Folder Include="Areas\Product\Content\Image\KeyCraft\_Images\" />
+    <Folder Include="Areas\Product\Controllers\KeyCraft\" />
+    <Folder Include="Areas\Product\Files\BetterHUD\" />
+    <Folder Include="Areas\Product\Models\" />
+    <Folder Include="Areas\Product\Views\KeyCraft\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Global\" />
-    <Folder Include="Views\Product\" />
-    <Folder Include="Views\Shared\Product\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

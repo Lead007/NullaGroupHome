@@ -16,7 +16,8 @@ namespace NullaGroupHome
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, area = "" }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, area = "" },
+                namespaces: new[] { "NullaGroupHome.Controllers" }
             );
         }
     }
