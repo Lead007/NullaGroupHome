@@ -1,0 +1,50 @@
+﻿@using NullaGroupHome.Areas.Product
+
+@{
+    var modname = this.Request.Params["modname"];
+    if (!File.Exists(this.Server.MapPath($"~/Areas/Product/Views/Shared/Product/_Layout{modname}.cshtml")))
+    {
+        //TODO throw
+    }
+    ViewBag.Title = "图库";
+    Layout = $"~/Areas/Product/Views/Shared/Product/_Layout{modname}.cshtml";
+}
+
+<script>
+    $("#MenuImage").addClass("active");
+</script>
+<div class="Text">
+    <h4>以下为@(modname)图库：</h4>
+    <hr />
+    <div>
+        @{
+            var mappath = $"/Areas/Product/Content/Image/{modname}/_Images";
+            var files = Directory.GetFiles(this.Server.MapPath(mappath)).Select(FileHelper.GetFullFileName).OrderBy(file => DateTimeHelper.ParseDateTime(file.Split(new[] { '_' }, 4)[1]));
+            if (!files.Any())
+            {
+                <p>
+                    <del>由于组内成员的拖延症，暂时没有图片。</del>
+                    <img src="/Content/_MyImages/_Global/噫于言表.jpg" alt="噫于言表" />
+                </p>
+            }
+            else
+            {
+                foreach (var file in files)
+                {
+                    <img src="@mappath/@file" height="60%" width="60%" />
+                    <br />
+                    <p>
+                        @{
+                            var infos = file.Split(new[] { '_' }, 4);
+                        }
+                        @infos[3].Substring(0, infos[3].LastIndexOf('.'))
+                        <br />
+                        <i style="color: gray;">@(infos[2]) 上传于@(DateTimeHelper.ToString(infos[1]))</i>
+                    </p>
+                    <hr />
+                }
+            }
+        }
+    </div>
+</div>
+

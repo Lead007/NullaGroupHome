@@ -98,7 +98,9 @@
     <Content Include="App_Data\About\Introductions\小鸟小姐.txt" />
     <Content Include="Areas\Product\Content\Image\BetterHUD\Icon.jpg" />
     <Content Include="Areas\Product\Content\Image\KeyCraft\Icon.jpg" />
+    <Content Include="Areas\Product\Content\Image\KeyCraft\_Images\KeyCraft_20160715_PrimeBlade_技能学习的初代GUI.jpg" />
     <Content Include="Areas\Product\Content\_Content\ProductList.css" />
+    <Content Include="Areas\Product\Files\BetterHUD\1.7.10\BetterHUD - Pre 1.1.jar" />
     <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 1.4.3.jar" />
     <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 2.1.2.jar" />
     <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 2.4.3.jar" />
@@ -180,6 +182,7 @@
     <Content Include="Content\_MyImages\Home\Introduction.jpg" />
     <Content Include="Content\_MyImages\Home\Products.jpg" />
     <Content Include="Content\_MyImages\_Global\Nulla.jpg" />
+    <Content Include="Content\_MyImages\_Global\噫于言表.jpg" />
     <Content Include="Content\_MyImages\_Global\土拨鼠.gif" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -199,6 +202,9 @@
     <Content Include="Areas\Product\Views\Shared\Product\_LayoutKeyCraft.cshtml" />
     <Content Include="Areas\Product\Views\Home\Index.cshtml" />
     <Content Include="Areas\Product\Views\Home\Download.cshtml" />
+    <Content Include="Areas\Product\Views\Home\Image.cshtml" />
+    <Content Include="Areas\Product\Views\KeyCraft\Index.cshtml" />
+    <Content Include="Areas\Product\Views\BetterHUD\Index.cshtml" />
     <None Include="Properties\PublishProfiles\NullaConfig.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -216,8 +222,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Product\Codes\Comparer.cs" />
+    <Compile Include="Areas\Product\Codes\DateTimeHelper.cs" />
     <Compile Include="Areas\Product\Codes\ModFile.cs" />
     <Compile Include="Areas\Product\Codes\Version.cs" />
+    <Compile Include="Areas\Product\Controllers\BetterHUDController.cs" />
     <Compile Include="Areas\Product\Controllers\HomeController.cs" />
     <Compile Include="Areas\Product\Controllers\KeyCraftController.cs" />
     <Compile Include="Areas\Product\ProductAreaRegistration.cs" />
@@ -265,11 +273,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Product\Content\Image\BetterHUD\_Images\" />
-    <Folder Include="Areas\Product\Content\Image\KeyCraft\_Images\" />
+    <Folder Include="Areas\Product\Controllers\BetterHUD\" />
     <Folder Include="Areas\Product\Controllers\KeyCraft\" />
-    <Folder Include="Areas\Product\Files\BetterHUD\" />
     <Folder Include="Areas\Product\Models\" />
-    <Folder Include="Areas\Product\Views\KeyCraft\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Global\" />
   </ItemGroup>

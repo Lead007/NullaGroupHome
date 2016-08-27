@@ -45,14 +45,14 @@
                                 <img src="/Areas/Product/Content/Image/@(modNameTuple.Item1)/Icon.jpg" height="80px" width="200px"/>
                                 <br/>
                                 <br/>
-                                @Html.ActionLink("查看主页", "Index", "Home", new {area = $"Product/{modNameTuple.Item1}"}, new {@class = "btn btn-primary", style = "margin-right: 5px;"})
+                                @Html.ActionLink("查看主页", "Index", modNameTuple.Item1, new {area = "Product"}, new {@class = "btn btn-primary", style = "margin-right: 5px;"})
                                 @Html.ActionLink("前往下载", "Download", "Home", new {area = "Product", modname = modNameTuple.Item1}, new {@class = "btn btn-success", style = "margin-left: 5px;"})
                             </div>
                             <div class="col-sm-4">
                                 <img src="/Areas/Product/Content/Image/@(modNameTuple.Item2)/Icon.jpg" height="80px" width="200px"/>
                                 <br/>
                                 <br/>
-                                @Html.ActionLink("查看主页", "Index", "Home", new { area = $"Product/{modNameTuple.Item2}" }, new { @class = "btn btn-primary", style = "margin-right: 5px;" })
+                                @Html.ActionLink("查看主页", "Index", modNameTuple.Item2, new { area = "Product" }, new { @class = "btn btn-primary", style = "margin-right: 5px;" })
                                 @Html.ActionLink("前往下载", "Download", "Home", new { area = "Product", modname = modNameTuple.Item2 }, new { @class = "btn btn-success", style = "margin-left: 5px;" })
                             </div>
                         </div>

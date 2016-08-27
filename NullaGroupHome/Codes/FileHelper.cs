@@ -24,22 +24,6 @@ namespace NullaGroupHome
         /// <returns>含后缀的文件名</returns>
         public static string GetFullFileName(string file) => file.Substring(file.LastIndexOf('\\') + 1);
 
-        ///// <summary>获取图片信息</summary>
-        ///// <param name="fileName">图片的完全限定名</param>
-        ///// <returns>包含图片信息的html对象</returns>
-        //public static HtmlGenericControl GetImageInfo(string fileName)
-        //{
-        //    var text = new HtmlGenericControl("p");
-        //    var infos = fileName.Split(new[] { '_' }, 4);
-        //    text.InnerText = infos[3].Substring(0, infos[3].LastIndexOf('.'));
-        //    text.Controls.Add(new HtmlGenericControl("br"));
-        //    var info = new HtmlGenericControl("i");
-        //    info.Attributes.Add("style", "color:gray");
-        //    info.InnerText = infos[2] + " 上传于 " + DateTimeHelper.ToString(infos[1]);
-        //    text.Controls.Add(info);
-        //    return text;
-        //}
-
         /// <summary>转化文件大小</summary>
         /// <param name="file">文件对象</param>
         /// <returns>转换后大小</returns>

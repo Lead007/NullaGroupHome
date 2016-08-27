@@ -15,10 +15,10 @@
 {
     <li>
         <a href="/Product/BetterHUD" target="_blank">
-            <img src="/Areas/Product/Areas/BetterHUD/Content/_Images/Icon.jpg" height="80px" width="120px" />
+            <img src="/Areas/Product/Content/Image/BetterHUD/Icon.jpg" height="80px" width="120px" />
         </a>
     </li>
-    <li id="MenuHome"><a href="/Product/BetterHUD">简 介</a></li>
-    <li id="MenuDownload"><a href="/Product/Download.aspx?modname=KeyCraft">下 载</a></li>
-    <li id="MenuImage"><a href="/Product/Images.aspx?modname=KeyCraft">图 片</a></li>
+<li id="MenuHome">@Html.ActionLink("简 介", "Index", "KeyCraft", new { area = "Product" }, null)</li>
+<li id="MenuDownload">@Html.ActionLink("下 载", "Download", "Home", new { area = "Product", modname = "KeyCraft" }, null)</li>
+<li id="MenuImage">@Html.ActionLink("图 片", "Image", "Home", new { area = "Product", modname = "KeyCraft" }, null)</li>
 }
