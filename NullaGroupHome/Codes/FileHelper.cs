@@ -10,20 +10,6 @@ namespace NullaGroupHome
     /// <summary>和文件处理有关的函数的静态类</summary>
     public static class FileHelper
     {
-        /// <summary>获取文件名（不含后缀名）</summary>
-        /// <param name="file">文件的完全限定名</param>
-        /// <returns>不含后缀的文件名</returns>
-        public static string GetFileName(string file)
-        {
-            var fileName = GetFullFileName(file);
-            return fileName.Substring(0, fileName.LastIndexOf('.'));
-        }
-
-        /// <summary>获取文件名（含后缀名）（亦可获取文件夹名）</summary>
-        /// <param name="file">文件的完全限定名</param>
-        /// <returns>含后缀的文件名</returns>
-        public static string GetFullFileName(string file) => file.Substring(file.LastIndexOf('\\') + 1);
-
         /// <summary>转化文件大小</summary>
         /// <param name="file">文件对象</param>
         /// <returns>转换后大小</returns>

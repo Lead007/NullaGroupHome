@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Packaging;
 using System.Linq;
+using System.Net.Mime;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -36,6 +40,36 @@ namespace NullaGroupHome.Controllers
         public ActionResult EmotionIcon()
         {
             return View();
+        }
+
+        //GET: About/EmotionIconDownload
+        public ActionResult EmotionIconDownload()
+        {
+            //生成压缩包
+            byte[] packageByte;
+            using (var memory = new MemoryStream())
+            {
+                using (var package = Package.Open(memory, FileMode.Create))
+                {
+                    var info = package.CreatePart(new Uri("/说明.txt", UriKind.Relative), "");
+                    var infobytes = Encoding.UTF8.GetBytes("本表情包由小鸟小姐版权所有，请勿随意转载！\n请无视压缩包内的[Content_Types].xml文件。");
+                    info.GetStream().Write(infobytes, 0, infobytes.Length);
+                    foreach (var file in Directory.GetFiles(this.Server.MapPath("/Content/_MyImages/About/Emotions/Emotion")))
+                    {
+                        var part = package.CreatePart(new Uri($"/Emotion/{Path.GetFileName(file)}", UriKind.Relative), "");
+                        var bytes = System.IO.File.ReadAllBytes(file);
+                        part.GetStream().Write(bytes, 0, bytes.Length);
+                    }
+                    foreach (var file in Directory.GetFiles(this.Server.MapPath("/Content/_MyImages/About/Emotions/Template")))
+                    {
+                        var part = package.CreatePart(new Uri($"/Template/{Path.GetFileName(file)}", UriKind.Relative), "");
+                        var bytes = System.IO.File.ReadAllBytes(file);
+                        part.GetStream().Write(bytes, 0, bytes.Length);
+                    }
+                }
+                packageByte = memory.ToArray();
+            }
+            return File(packageByte, MediaTypeNames.Application.Zip, "表情包.zip");
         }
     }
 }

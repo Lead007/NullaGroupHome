@@ -12,7 +12,7 @@ namespace NullaGroupHome.Areas.Product
     {
         int IComparer<string>.Compare(string x, string y)
         {
-            return new ModFile(FileHelper.GetFullFileName(x)).CompareTo(new ModFile(FileHelper.GetFullFileName(y)));
+            return new ModFile(Path.GetFileName(x)).CompareTo(new ModFile(Path.GetFileName(x)));
         }
     }
 }

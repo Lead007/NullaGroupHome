@@ -1,6 +1,6 @@
 ﻿<!--自己的css-->
-<link rel="stylesheet" href="/Content/_MyContent/_Global/TableHead.css"/>
-<link rel="stylesheet" href="/Content/_MyContent/About/Emphasize.css"/>
+<link rel="stylesheet" href="/Content/_MyContent/_Global/TableHead.css" />
+<link rel="stylesheet" href="/Content/_MyContent/About/Emphasize.css" />
 <!--主体-->
 @{
     ViewBag.Title = "原创表情包";
@@ -20,36 +20,37 @@
                 </tr>
             </thead>
             <tbody>
-            @{
-                var emotions = Directory.GetFiles(this.Server.MapPath("/Content/_MyImages/About/Emotions/Emotion")).OrderBy(File.GetCreationTime).Select(FileHelper.GetFullFileName);
-                foreach (var emotion in emotions)
-                {
-                    <tr>
-                        <td>
-                            @if (File.Exists(this.Server.MapPath($"/Content/_MyImages/About/Emotions/Template/{emotion}")))
-                            {
-                                <img src="/Content/_MyImages/About/Emotions/Template/@emotion" width="100px" height="100px"/>
-                            }
-                            else if (File.Exists(this.Server.MapPath($"/Content/_MyImages/About/Emotions/Template/{emotion}".Replace(".jpg", ".gif"))))
-                            {
-                                <img src="/Content/_MyImages/About/Emotions/Template/@emotion.Replace(".jpg",".gif")" width="100px" height="100px"/>
-                            }
-                            else
-                            {
-                                <p style="text-align: center;">找不到原表情</p>
-                            }
-                        </td>
-                        <td>
-                            <img src="/Content/_MyImages/About/Emotions/Emotion/@emotion" width="100px" height="100px"/>
-                        </td>
-                    </tr>
+                @{
+                    var emotions = Directory.GetFiles(this.Server.MapPath("/Content/_MyImages/About/Emotions/Emotion")).OrderBy(File.GetCreationTime).Select(Path.GetFileName);
+                    foreach (var emotion in emotions)
+                    {
+                        <tr>
+                            <td>
+                                @if (File.Exists(this.Server.MapPath($"/Content/_MyImages/About/Emotions/Template/{emotion}")))
+                                {
+                                    <img src="/Content/_MyImages/About/Emotions/Template/@emotion" width="100px" height="100px" />
+                                }
+                                else if (File.Exists(this.Server.MapPath($"/Content/_MyImages/About/Emotions/Template/{emotion}".Replace(".jpg", ".gif"))))
+                                {
+                                    <img src="/Content/_MyImages/About/Emotions/Template/@emotion.Replace(".jpg",".gif")" width="100px" height="100px" />
+                                }
+                                else
+                                {
+                                    <div style="margin-top: 35px;">
+                                        <span class="label label-primary" style="font-size: 20px; margin-top: 35px;">找不到原表情</span>
+                                    </div>
+                                }
+                            </td>
+                            <td>
+                                <img src="/Content/_MyImages/About/Emotions/Emotion/@emotion" width="100px" height="100px" />
+                            </td>
+                        </tr>
+                    }
                 }
-            }
             </tbody>
         </table>
         <br />
-        <p>你也可以在这里下载<a>全套表情压缩包</a>。</p>
-        <p class="emphasize">本表情包由组长@(MemberUri.GetMemberUri(Html,Administrator.小鸟小姐))原创，请勿随意转载！</p>
+        <p>你也可以在这里下载@(Html.ActionLink("全套表情压缩包", "EmotionIconDownload", "About", new { area = "" }, null))。</p>
+        <p class="emphasize">本表情包由组长@(MemberUri.GetMemberUri(Html, Administrator.小鸟小姐))原创，请勿随意转载！</p>
     </div>
 </div>
-
