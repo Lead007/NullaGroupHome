@@ -5,12 +5,30 @@
 }
 
 <!--自己的css-->
-<link rel="stylesheet" href="/Content/_MyContent/_Global/Head.css"/>
-<link rel="stylesheet" href="/Areas/Product/Content/_Content/ProductList.css" />
+<link rel="stylesheet" href="/Content/_MyContent/_Global/Head.min.css" />
+<link rel="stylesheet" href="/Areas/Product/Content/_Content/ProductList.min.css" />
 <!--主体-->
 <script>
     $("#MenuProduct").addClass("active");
 </script>
+<style>
+    .header {
+        margin-left: 40px;
+    }
+
+    @@media(min-width: 481px) {
+        .header > span:before {
+            content: "\A0\A0\A0";
+        }
+    }
+
+    @@media(max-width:480px) {
+        .header>span:before {
+            content: "\A\A";
+            white-space: pre;
+        }
+    }
+</style>
 <div class="container">
     <div class="row">
         <div class="col-sm-push-1 col-lg-3 col-sm-4">
@@ -20,8 +38,8 @@
     <div class="row">
         <div class="col-sm-push-1 col-sm-10 Text">
             <hr />
-            <h4 style="margin-left: 40px;">
-                <img src="/Content/_MyImages/_Global/土拨鼠.gif" alt="" />&nbsp;&nbsp;&nbsp;以下为Nulla小组制作的作品列表：
+            <h4 class="header">
+                <img src="/Content/_MyImages/_Global/土拨鼠.gif" alt="" /><span>以下为Nulla小组制作的作品列表：</span>
             </h4>
             <br />
         </div>
@@ -32,15 +50,15 @@
         <div class="col-sm-11 col-sm-push-1">
             <div class="container">
                 @{
-                    var products = Directory.GetDirectories(this.Server.MapPath("/Areas/Product/Content/Image")).OrderBy(Directory.GetCreationTime).Select(FileHelper.GetFullFileName).ToArray();
+                    var products = Directory.GetDirectories(this.Server.MapPath("/Areas/Product/Files")).OrderBy(Directory.GetCreationTime).Select(Path.GetFileName).ToArray();
                     var productsTuple = new List<Tuple<string, string>>();
-                    for (int i = 0, max = ((products.Length >> 1) << 1) - 1; i < max; i += 2)
+                    for (var i = 0; i < products.Length; i += 2)
                     {
-                        productsTuple.Add(new Tuple<string, string>(products[i], products[i + 1]));
+                        productsTuple.Add(new Tuple<string, string>(products[i], i + 1 != products.Length ? products[i + 1] : null));
                     }
                     foreach (var modNameTuple in productsTuple)
                     {
-                        <div class="row">
+                        <div class="row" style="padding-top: 20px;">
                             <div class="col-sm-4">
                                 <img src="/Areas/Product/Content/Image/@(modNameTuple.Item1)/Icon.jpg" height="80px" width="200px"/>
                                 <br/>
@@ -48,13 +66,16 @@
                                 @Html.ActionLink("查看主页", "Index", modNameTuple.Item1, new {area = "Product"}, new {@class = "btn btn-primary", style = "margin-right: 5px;"})
                                 @Html.ActionLink("前往下载", "Download", "Home", new {area = "Product", modname = modNameTuple.Item1}, new {@class = "btn btn-success", style = "margin-left: 5px;"})
                             </div>
-                            <div class="col-sm-4">
-                                <img src="/Areas/Product/Content/Image/@(modNameTuple.Item2)/Icon.jpg" height="80px" width="200px"/>
-                                <br/>
-                                <br/>
-                                @Html.ActionLink("查看主页", "Index", modNameTuple.Item2, new { area = "Product" }, new { @class = "btn btn-primary", style = "margin-right: 5px;" })
-                                @Html.ActionLink("前往下载", "Download", "Home", new { area = "Product", modname = modNameTuple.Item2 }, new { @class = "btn btn-success", style = "margin-left: 5px;" })
-                            </div>
+                            @if (modNameTuple.Item2 != null)
+                            {
+                                <div class="col-sm-4">
+                                    <img src="/Areas/Product/Content/Image/@(modNameTuple.Item2)/Icon.jpg" height="80px" width="200px" />
+                                    <br />
+                                    <br />
+                                    @Html.ActionLink("查看主页", "Index", modNameTuple.Item2, new { area = "Product" }, new { @class = "btn btn-primary", style = "margin-right: 5px;" })
+                                    @Html.ActionLink("前往下载", "Download", "Home", new { area = "Product", modname = modNameTuple.Item2 }, new { @class = "btn btn-success", style = "margin-left: 5px;" })
+                                </div>
+                            }
                         </div>
                     }
                 }

@@ -1,4 +1,5 @@
-﻿thead.table-head {
+﻿/*表头*/
+thead.table-head {
     font-weight: bold;
     background-color: black;
     color: white;

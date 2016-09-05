@@ -31,7 +31,4 @@ $.ajax({
             $("#cd-timeline").append(block);
         }
     },
-    error: function () {
-        alert("error");
-    }
 });

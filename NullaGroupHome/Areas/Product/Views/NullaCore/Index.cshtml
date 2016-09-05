@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "主页";
+    Layout = "~/Areas/Product/Views/Shared/Product/_LayoutNullaCore.cshtml";
+}
+
+<script>
+    $("#MenuHome").addClass("active");
+</script>
+<div class="Text">
+    <img src="/Areas/Product/Content/Image/NullaCore/Icon.jpg" alt="Icon" height="150" width="450" />
+    <br />
+    <h3>NullaCore简介</h3>
+    <hr />
+    <p>NullaCore是KeyCraft（Rewrite版）的前置mod。</p>
+    <p>虽然我也不知道为什么组长要做这么一个Core，不过反正目前使用KeyCraft（Rewrite版）需要NullaCore作为前置mod。</p>
+    <p>@Html.ActionLink("<<去往下载页", "Download", "Home", new { area = "Product", modname = "NullaCore" }, null)</p>
+</div>
+

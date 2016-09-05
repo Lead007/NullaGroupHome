@@ -42,8 +42,9 @@ namespace NullaGroupHome.Controllers
             return View();
         }
 
-        //GET: About/EmotionIconDownload
-        public ActionResult EmotionIconDownload()
+        //GET: About/EmotionIconZipDownload
+        [HttpGet]
+        public ActionResult EmotionIconZipDownload()
         {
             //生成压缩包
             byte[] packageByte;
@@ -51,7 +52,7 @@ namespace NullaGroupHome.Controllers
             {
                 using (var package = Package.Open(memory, FileMode.Create))
                 {
-                    var info = package.CreatePart(new Uri("/说明.txt", UriKind.Relative), "");
+                    var info = package.CreatePart(new Uri("/Readme.txt", UriKind.Relative), "");
                     var infobytes = Encoding.UTF8.GetBytes("本表情包由小鸟小姐版权所有，请勿随意转载！\n请无视压缩包内的[Content_Types].xml文件。");
                     info.GetStream().Write(infobytes, 0, infobytes.Length);
                     foreach (var file in Directory.GetFiles(this.Server.MapPath("/Content/_MyImages/About/Emotions/Emotion")))

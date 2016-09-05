@@ -2,9 +2,9 @@
 
 @{
     var modname = this.Request.Params["modname"];
-    if (!File.Exists(this.Server.MapPath($"~/Areas/Product/Views/Shared/Product/_Layout{modname}.cshtml")))
+    if (!Directory.Exists(this.Server.MapPath($"~/Areas/Product/Content/Image") + $"\\{modname}") || string.IsNullOrEmpty(modname))
     {
-        //TODO throw
+        throw new ModInexistenceException(modname);
     }
     ViewBag.Title = "图库";
     Layout = $"~/Areas/Product/Views/Shared/Product/_Layout{modname}.cshtml";
@@ -19,7 +19,7 @@
     <div>
         @{
             var mappath = $"/Areas/Product/Content/Image/{modname}/_Images";
-            var files = Directory.GetFiles(this.Server.MapPath(mappath)).Select(FileHelper.GetFullFileName).OrderBy(file => DateTimeHelper.ParseDateTime(file.Split(new[] { '_' }, 4)[1]));
+            var files = Directory.GetFiles(this.Server.MapPath(mappath)).Select(Path.GetFileName).OrderBy(file => DateTimeHelper.ParseDateTime(file.Split(new[] { '_' }, 4)[1]));
             if (!files.Any())
             {
                 <p>
@@ -42,9 +42,8 @@
                         <i style="color: gray;">@(infos[2]) 上传于@(DateTimeHelper.ToString(infos[1]))</i>
                     </p>
                     <hr />
-                }
-            }
+                                }
+                            }
         }
     </div>
 </div>
-

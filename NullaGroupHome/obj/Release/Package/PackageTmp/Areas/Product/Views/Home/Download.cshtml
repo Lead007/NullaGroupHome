@@ -1,13 +1,15 @@
-﻿<!--自己的css-->
-<link rel="stylesheet" href="/Content/_MyContent/_Global/Content.css"/>
-<link rel="stylesheet" href="/Content/_MyContent/_Global/TableHead.css"/>
+﻿<!--自己的css和js-->
+<script src="/Areas/Product/Scripts/DownloadTableHead.min.js"></script>
+<link rel="stylesheet" href="/Content/_MyContent/_Global/Content.min.css" />
+<link rel="stylesheet" href="/Content/_MyContent/_Global/TableHead.min.css" />
 <!--主体-->
+@using System.Xml
 @using NullaGroupHome.Areas.Product
 @{
     var modname = this.Request.Params["modname"];
-    if (!File.Exists(this.Server.MapPath($"~/Areas/Product/Views/Shared/Product/_Layout{modname}.cshtml")))
+    if (!Directory.Exists(this.Server.MapPath("~/Areas/Product/Files") + $"\\{modname}") || string.IsNullOrEmpty(modname))
     {
-        //TODO throw
+        throw new ModInexistenceException(modname);
     }
     ViewBag.Title = "下载";
     Layout = $"~/Areas/Product/Views/Shared/Product/_Layout{modname}.cshtml";
@@ -23,11 +25,11 @@
                 <h3 class="lead">&nbsp;&nbsp;请选择Minecraft的游戏版本：</h3>
                 <ul class="ul-content">
                     @{
-                        var versions = Directory.GetDirectories(this.Server.MapPath($"/Areas/Product/Files/{modname}")).Select(FileHelper.GetFullFileName);
+                        var versions = Directory.GetDirectories(this.Server.MapPath($"/Areas/Product/Files/{modname}")).Select(Path.GetFileName);
                         foreach (var version in versions)
                         {
                             //导航
-                            <li><a href="#@version.Replace(".",string.Empty)">@version</a></li>
+                            <li><a href="#@version.Replace(".",string.Empty).Replace(" ",string.Empty)">@version</a></li>
                         }
                     }
                 </ul>
@@ -37,23 +39,36 @@
 </div>
 <br />
 <div>
-    @foreach (var version in versions)
-    {
-        <h3 class="lead" id="@version.Replace(".", string.Empty)">@($"{modname} for Minecraft {version}:")</h3>
-        <br />
-        <table class="table table-bordered table-hover">
-            <thead class="table-head">
-                <script src="/Areas/Product/Scripts/DownloadTableHead.js"></script>
-            </thead>
-            <tbody>
+    @{
+        var i = 0;
+        foreach (var version in versions)
+        {
+            var mappath = $"/Areas/Product/Files/{modname}/{version}";
+            var files = Directory.GetFiles(this.Server.MapPath(mappath)).Where(path => Path.GetExtension(path) == ".jar").ToArray();
+            Array.Sort(files, new FileVersionComparer());
+            var xmlPath = this.Server.MapPath(mappath) + "\\VersionInfo.xml";
+            XmlDocument document = null;
+            string preposition = null;
+            if (File.Exists(xmlPath))
+            {
+                document = new XmlDocument();
+                document.Load(xmlPath);
+                preposition = (document.SelectSingleNode("/version-info/preposition") as XmlElement)?.GetAttribute("name");
+            }
+            <h3 class="lead" id="@version.Replace(".", string.Empty).Replace(" ", string.Empty)">@($"{modname} for Minecraft {version}:" + (preposition == null ? string.Empty : $"（需要{preposition}作为前置）"))</h3>
+            <br />
+            <table class="table table-bordered table-hover">
+                <thead class="table-head">
+                <script>
+                    writeTableHead(@((document != null).ToString().ToLower()), $(".table-head:eq(@i)"));
+                </script>
+                </thead>
+                <tbody>
                 @{
-                    var mappath = $"/Areas/Product/Files/{modname}/{version}";
-                    var files = Directory.GetFiles(this.Server.MapPath(mappath));
-                    Array.Sort(files, new FileVersionComparer());
                     foreach (var file in files)
                     {
                         var fileInfo = new FileInfo(file);
-                        var fileName = FileHelper.GetFullFileName(file);
+                        var fileName = Path.GetFileName(file);
                         var modFile = new ModFile(fileName);
                         <tr>
                             <td>@modFile.Type</td>
@@ -61,10 +76,21 @@
                             <td>@fileInfo.GetFileSize()</td>
                             <td>@fileInfo.LastWriteTime.ToShortDateString()</td>
                             <td>@version</td>
+                            @if (document != null)
+                            {
+                                <td>
+                                    @{
+                                        var element = document.SelectSingleNode("/version-info/preposition")?.ChildNodes.OfType<XmlElement>().FirstOrDefault(xe => xe.GetAttribute("type") == modFile.Type.ToString() && xe.GetAttribute("version") == modFile.FileVersion.ToString());
+                                    }
+                                    @($"{element.ChildNodes[0].InnerText} {element.ChildNodes[1].InnerText}")
+                                </td>
+                            }
                         </tr>
                     }
                 }
-            </tbody>
-        </table>
-                    }
+                </tbody>
+            </table>
+            i++;
+        }
+    }
 </div>

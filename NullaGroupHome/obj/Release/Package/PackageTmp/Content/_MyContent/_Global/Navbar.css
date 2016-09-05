@@ -1,4 +1,5 @@
-﻿.navbar-default {
+﻿/*导航栏自定义*/
+.navbar-default {
     background: white;
     border-width: 0;
 }

@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = "~/Areas/Product/Views/Shared/_LayoutProduct.cshtml";
+
+}
+
+<script>
+    setBetterHUDTitle("@ViewBag.Title");
+</script>
+<div>
+    @RenderBody()
+</div>
+
+@section Navbar
+{
+    <li>
+        <a href="/Product/KotoriTech" target="_blank">
+            <img src="/Areas/Product/Content/Image/KotoriTech/Icon.jpg" height="80px" width="120px" />
+        </a>
+    </li>
+<li id="MenuHome">@Html.ActionLink("简 介", "Index", "KotoriTech", new { area = "Product" }, null)</li>
+<li id="MenuDownload">@Html.ActionLink("下 载", "Download", "Home", new { area = "Product", modname = "KotoriTech" }, null)</li>
+<li id="MenuImage">@Html.ActionLink("图 片", "Image", "Home", new { area = "Product", modname = "KotoriTech" }, null)</li>
+}

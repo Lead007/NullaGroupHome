@@ -1,0 +1,14 @@
+﻿@model NullaGroupHome.Areas.Product.ProductExceptionInfo
+
+@{
+    Layout = "~/Views/Shared/_LayoutException.cshtml";
+}
+
+<div>
+    @MvcHtmlString.Create(Model.PageException.ToString())
+</div>
+
+@section ExceptionMessage
+{
+    @Model.PageException.Message
+}

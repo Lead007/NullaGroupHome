@@ -13,5 +13,11 @@ namespace NullaGroupHome.Controllers
         {
             return View();
         }
+
+        //GET: /Home/NotFound
+        public ActionResult NotFound()
+        {
+            return View();
+        }
     }
 }

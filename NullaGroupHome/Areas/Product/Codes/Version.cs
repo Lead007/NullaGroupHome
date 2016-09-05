@@ -14,12 +14,16 @@ namespace NullaGroupHome.Areas.Product
             Beta,
             Gamma
         }
+
+        private readonly string _version;
+
         public string FileVersion { get; set; }
 
         public Test TestVersion { get; set; }
 
         public Version(string version)
         {
+            _version = version;
             switch (version[version.Length - 1])
             {
                 case 'α':
@@ -50,5 +54,7 @@ namespace NullaGroupHome.Areas.Product
             }
             return this.TestVersion.CompareTo(other.TestVersion);
         }
+
+        public override string ToString() => _version;
     }
 }

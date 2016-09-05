@@ -8,7 +8,7 @@
 }
 
 <!--自己的css-->
-<link rel="stylesheet" href="/Content/_MyContent/About/Introduction.css"/>
+<link rel="stylesheet" href="/Content/_MyContent/About/Introduction.min.css"/>
 <!--主体-->
 <br />
 <br />
@@ -51,8 +51,8 @@
                     text = text.Replace("\r\n", "<br/>");
                     text = text.Insert(0, "<p>");
                     text = text.Insert(text.Length, "</p>");
-                    text = text.Replace("<p><span>", "<span>");
-                    text = text.Replace("</span></p>", "</span>");
+                    text = text.Replace("<p><h6>", "<h6>");
+                    text = text.Replace("</h6></p>", "</h6>");
                     text = Enum.GetNames(typeof (Administrator))
                         .Where(n => n != name)
                         .Aggregate(text,

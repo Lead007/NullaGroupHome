@@ -1,4 +1,5 @@
-﻿.Text {
+﻿/*文本样式*/
+.Text {
     margin-top: 40px;
     font-weight: bold;
 }
@@ -8,7 +9,7 @@
         font-family: "黑体";
     }
 
-    .Text > p {
+    .Text p {
         line-height: 25px;
         white-space: pre-wrap;
         font-family: "仿宋";
@@ -16,13 +17,19 @@
         margin-bottom: 40px;
     }
 
-    .Text > span {
+    .Text span.text-larger {
         font-size: 21px;
     }
 
+/*介绍的文本样式*/
 .intro-text-body {
     background-color: lightgoldenrodyellow;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 5px;
+}
+
+/*缩进*/
+.p-indent p {
+    text-indent: 2em;
 }

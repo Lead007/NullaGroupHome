@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "出错了";
+}
+<!--自己的css-->
+<link rel="stylesheet" href="/Content/_MyContent/_Global/ExceptionString.min.css" />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-push-2 col-sm-10">
+            <h3>
+                <img src="/Content/_MyImages/_Global/出错了.jpg" height="150px" width="150px" />
+                &nbsp;&nbsp;&nbsp;出错了……
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-push-1 col-sm-10">
+            <br/>
+            <p>错误信息：@RenderSection("ExceptionMessage", true)</p>
+            <script>
+                function toggleException() {
+                    $(".Text").toggle();
+                    var content = $(".btn").text() === "展开异常详情" ? "收起异常详情" : "展开异常详情";
+                    $("button").text(content);
+                }
+            </script>
+            <button class="btn btn-primary" onclick="toggleException()">展开异常详情</button>
+            <div class="Text exception-string">
+                @RenderBody()
+            </div>
+            <script>
+                $(".Text").toggle();
+            </script>
+        </div>
+    </div>
+</div>

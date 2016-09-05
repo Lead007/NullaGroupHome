@@ -1,4 +1,5 @@
-﻿.index-head {
+﻿/*大标题样式*/
+.index-head {
     font-size: 40px;
     font-family: '黑体';
     background-color: blueviolet;

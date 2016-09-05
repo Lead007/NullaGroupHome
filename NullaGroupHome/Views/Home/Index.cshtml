@@ -5,9 +5,10 @@
 }
 
 <!--自己的css和js-->
-<script src="/Scripts/_MyScripts/Home/YearLong.js"></script>
-<script src="/Scripts/_MyScripts/_Global/ConstFields.js"></script>
-<link rel="stylesheet" href="/Content/_MyContent/_Global/Head.css"/>
+<script src="/Scripts/_MyScripts/Home/YearLong.min.js"></script>
+<script src="/Scripts/_MyScripts/_Global/ConstFields.min.js"></script>
+<link rel="stylesheet" href="/Content/_MyContent/_Global/Head.min.css"/>
+<link rel="stylesheet" href="/Content/_MyContent/About/Emphasize.min.css"/>
 
 <script>
     $("#MenuHome").addClass("active");
@@ -29,26 +30,30 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
-                        <img src="/Content/_MyImages/Home/Introduction.jpg" height="70px" width="70px" />
+                        <img src="/Content/_MyImages/Home/Introduction.jpg" height="70px" width="70px"/>
                         <h3>小组简介</h3>
                         <p>
-                            Nulla小组是国内最业余的业余Minecraft Mod制作组。小组由组长@(MemberUri.GetMemberUri(Html, Administrator.小鸟小姐))于2014年12月14日在北京创建。如今小组已发展至<span class="members-count"></span>名成员，其中骨干成员7名。<br />
-                            <br />
+                            Nulla小组是国内最业余的业余Minecraft Mod制作组。小组由组长@(MemberUri.GetMemberUri(Html, Administrator.小鸟小姐))于2014年12月14日在北京创建。如今小组已发展至<span class="members-count"></span>名成员，其中骨干成员7名。<br/>
+                            <br/>
                             更详细的信息请查看@(Html.ActionLink("关于", "Index", "About"))。
                         </p>
                     </div>
                     <div class="col-sm-4 col-sm-push-2">
-                        <img src="/Content/_MyImages/Home/Products.jpg" height="70px" width="70px" />
+                        <img src="/Content/_MyImages/Home/Products.jpg" height="70px" width="70px"/>
                         <h3>我们的作品</h3>
                         <p>
-                            Nulla小组在自创建以来的<script> document.write(Time());</script>时间内，已经制作了多个Minecraft Mod作品。<br />
-                            <br />
-                            详细请查看<a href="/Product/Index.aspx">我们的作品</a>。
+                            Nulla小组在自创建以来的<script> document.write(Time());</script>时间内，已经制作了多个Minecraft Mod作品。<br/>
+                            <br/>
+                            详细请查看@(Html.ActionLink("我们的作品", "Index", "Home", new {area = "Product"}, new {style = "margin-bottom: 10px;"}))。
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-sm-push-5 col-sm-5 emphasize">本小组目前没有美工。</div>
     </div>
 </div>
 

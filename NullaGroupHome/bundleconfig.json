@@ -1,0 +1,95 @@
+[
+  {
+    "outputFileName": "Scripts/_MyScripts/_Global/TitleHelper.min.js",
+    "inputFiles": [
+      "Scripts/_MyScripts/_Global/TitleHelper.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/_MyContent/_Global/Global.min.css",
+    "inputFiles": [
+      "Content/_MyContent/_Global/Footer.css",
+      "Content/_MyContent/_Global/Hr.css",
+      "Content/_MyContent/_Global/Navbar.css",
+      "Content/_MyContent/_Global/Text.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/_MyScripts/_Global/ConstFields.min.js",
+    "inputFiles": [
+      "Scripts/_MyScripts/_Global/ConstFields.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/_MyScripts/Home/YearLong.min.js",
+    "inputFiles": [
+      "Scripts/_MyScripts/Home/YearLong.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/_MyScripts/About/ShowTimeLine.min.js",
+    "inputFiles": [
+      "Scripts/_MyScripts/About/ShowTimeLine.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/_MyContent/_Global/Content.min.css",
+    "inputFiles": [
+      "Content/_MyContent/_Global/Content.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/_MyContent/_Global/ExceptionString.min.css",
+    "inputFiles": [
+      "Content/_MyContent/_Global/ExceptionString.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/_MyContent/_Global/Head.min.css",
+    "inputFiles": [
+      "Content/_MyContent/_Global/Head.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/_MyContent/_Global/TableHead.min.css",
+    "inputFiles": [
+      "Content/_MyContent/_Global/TableHead.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/_MyContent/About/TimeLineStyle.min.css",
+    "inputFiles": [
+      "Content/_MyContent/About/TimeLineStyle.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/_MyContent/About/Emphasize.min.css",
+    "inputFiles": [
+      "Content/_MyContent/About/Emphasize.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/_MyContent/About/Introduction.min.css",
+    "inputFiles": [
+      "Content/_MyContent/About/Introduction.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/_MyContent/About/Members.min.css",
+    "inputFiles": [
+      "Content/_MyContent/About/Members.css"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Product/Content/_Content/ProductList.min.css",
+    "inputFiles": [
+      "Areas/Product/Content/_Content/ProductList.css"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Product/Scripts/DownloadTableHead.min.js",
+    "inputFiles": [
+      "Areas/Product/Scripts/DownloadTableHead.js"
+    ]
+  }
+]

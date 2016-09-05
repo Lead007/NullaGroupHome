@@ -13,7 +13,7 @@
       "Date": "2015年12月13日"
     },
     {
-      "Event":"Nulla小组一周年组祭，举办了一次Minecraft UHC PVP，以群主小鸟小姐获胜告终。<a href=\"http: //www.bilibili.com/video/av3393075/\" target=\"_blank\">视频链接</a>（PrimeBlade视角）",
+      "Event":"Nulla小组一周年组祭，举办了一次Minecraft UHC PVP，以群主小鸟小姐获胜告终。<a href=\"http://www.bilibili.com/video/av3393075/\" target=\"_blank\">视频链接</a>（PrimeBlade视角）",
       "Date": "2015年12月14日"
     },
     {
@@ -25,8 +25,16 @@
       "Date": "2016年1月31日"
     },
     {
-      "Event": "KeyCraft（Pre版）在MCBBS<a href=\"http: //www.mcbbs.net/forum.php?mod=viewthread&tid=549670&highlight=keycraft\" target=\"_blank\">发布</a>。",
+      "Event": "KeyCraft（Pre版）在MCBBS<a href=\"http://www.mcbbs.net/forum.php?mod=viewthread&tid=549670&highlight=keycraft\" target=\"_blank\">发布</a>。",
       "Date": "2016年2月1日"
+    },
+    {
+      "Event": "经过整整两个月的拖延之后，组长总算糊弄出来一个bug百出的kcrw的demo版本，并<a href=\"/Product/Home/Download?modname=KeyCraft\">发布</a>在官网上。",
+      "Date": "2016年8月30号"
+    },
+    {
+      "Event": "KotoriTech<a href=\"/Product/Home/Download?modname=KotoriTech\">发布</a>在官网上。",
+      "Date": "2016年9月3日"
     }
   ]
 }

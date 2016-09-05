@@ -1,15 +1,17 @@
-﻿<!--自己的css-->
-<link rel="stylesheet" href="/Content/_MyContent/_Global/TableHead.css" />
-<link rel="stylesheet" href="/Content/_MyContent/About/Emphasize.css" />
-<!--主体-->
+﻿
 @{
     ViewBag.Title = "原创表情包";
     Layout = "~/Views/Shared/_LayoutAbout.cshtml";
 }
+
+<!--自己的css-->
+<link rel="stylesheet" href="/Content/_MyContent/_Global/TableHead.min.css" />
+<link rel="stylesheet" href="/Content/_MyContent/About/Emphasize.min.css" />
+<!--主体-->
 <div class="Text">
     <h3>组长的原创表情包集锦</h3>
     <hr />
-    <p>众所周知，组长<script> writeMemberUriByIndex(0);</script>对素材的绘制非常美(ling)观(hun)。组长本人显然也明白这一点，因此倾情为大家奉献了许多灵魂化的仿制表情包。</p>
+    <p>众所周知，组长@(MemberUri.GetMemberUri(Html,Administrator.小鸟小姐))对素材的绘制非常美(ling)观(hun)。组长本人显然也明白这一点，因此倾情为大家奉献了许多灵魂化的仿制表情包。</p>
     <p><del>显然，组长在这方面的执行力远大于填坑时的执行力。</del></p>
     <div style="text-align: center">
         <table class="table table-bordered table-hover">
@@ -50,7 +52,7 @@
             </tbody>
         </table>
         <br />
-        <p>你也可以在这里下载@(Html.ActionLink("全套表情压缩包", "EmotionIconDownload", "About", new { area = "" }, null))。</p>
+        <p>你也可以在这里下载全套表情压缩包。@(Html.ActionLink("ZIP版", "EmotionIconZipDownload", "About", new { area = "" }, null))。</p>
         <p class="emphasize">本表情包由组长@(MemberUri.GetMemberUri(Html, Administrator.小鸟小姐))原创，请勿随意转载！</p>
     </div>
 </div>

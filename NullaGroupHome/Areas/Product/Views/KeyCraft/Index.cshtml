@@ -4,25 +4,26 @@
     Layout = "~/Areas/Product/Views/Shared/Product/_LayoutKeyCraft.cshtml";
 }
 
+<!--自己的css-->
+<link rel="stylesheet" href="/Content/_MyContent/About/Emphasize.min.css"/>
 <script>
     $("#MenuHome").addClass("active");
 </script>
 <div class="Text">
     <img src="/Areas/Product/Content/Image/KeyCraft/Icon.jpg" alt="Icon" height="150" width="450" />
     <br />
-    <h3 id="简介">KeyCraft简介</h3>
+    <h3>KeyCraft简介</h3>
     <hr />
     <p>KeyCraft是由Nulla小组开发制作的Minecraft Mod，面向Minecraft 1.7.10与1.8.9，基于Forge API。</p>
     <p>由于开发者有深度Key厨（对我说的就是组长），因此KeyCraft旨在在Minecraft中<del>这里还没写完</del></p>
-    <h3 id="下载">KeyCraft下载</h3>
+    <p>由于旧版本太垃圾了，所以组长又写了一个新的Rewrite版本。<span class="emphasize">请使用此版本。</span></p>
+    <h3>KeyCraft下载</h3>
     <hr />
     <p>@Html.ActionLink("<<去往下载页", "Download", "Home", new { area = "Product", modname = "KeyCraft" }, null)</p>
-    <h3 id="图库">KeyCraft图库</h3>
+    <h3>KeyCraft图库</h3>
     <hr />
     <p>@Html.ActionLink("<<去往图库页", "Image", "Home", new { area = "Product", modname = "KeyCraft" }, null)</p>
-    <h3 id="Wiki">KeyCraft Wiki</h3>
+    <h3>KeyCraft Wiki</h3>
     <hr />
     <p>我们为玩家编写了关于KeyCraft的各个物品、特性的详细介绍<del>（然而在开发者的拖延症笼罩之下还没写）</del>。<a>&lt;&lt;前往访问</a></p>
 </div>
-
-

@@ -1,4 +1,5 @@
-﻿.content {
+﻿/*页首导航的样式*/
+.content {
     border-color: blue;
     border-width: 2px;
     border-style: solid;
@@ -10,5 +11,5 @@
 ul.ul-content {
     font-family: "微软雅黑";
     font-size: 18px;
-    list-style-image: url(/_Images/链接.jpg);
+    list-style-image: url(/Content/_MyImages/_Global/链接.jpg);
 }
