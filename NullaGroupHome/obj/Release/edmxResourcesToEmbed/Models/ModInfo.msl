@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModInfoModelStoreContainer" CdmEntityContainer="ModInfoEntities">
+    <EntitySetMapping Name="ModImages">
+      <EntityTypeMapping TypeName="ModInfoModel.ModImage">
+        <MappingFragment StoreEntitySet="ModImages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ModId" ColumnName="ModId" />
+          <ScalarProperty Name="Uploader" ColumnName="Uploader" />
+          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+          <ScalarProperty Name="Information" ColumnName="Information" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ModNames">
+      <EntityTypeMapping TypeName="ModInfoModel.ModName">
+        <MappingFragment StoreEntitySet="ModName">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VersionInfoes">
+      <EntityTypeMapping TypeName="ModInfoModel.VersionInfo">
+        <MappingFragment StoreEntitySet="VersionInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ModId" ColumnName="ModId" />
+          <ScalarProperty Name="GameVersion" ColumnName="GameVersion" />
+          <ScalarProperty Name="VersionType" ColumnName="VersionType" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="PrepositionModName" ColumnName="PrepositionModName" />
+          <ScalarProperty Name="PrepositionType" ColumnName="PrepositionType" />
+          <ScalarProperty Name="PrepositionVersion" ColumnName="PrepositionVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmotionIcons">
+      <EntityTypeMapping TypeName="ModInfoModel.EmotionIcon">
+        <MappingFragment StoreEntitySet="EmotionIcons">
+          <ScalarProperty Name="Emotion" ColumnName="Emotion" />
+          <ScalarProperty Name="TemplateExtension" ColumnName="TemplateExtension" />
+          <ScalarProperty Name="Template" ColumnName="Template" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

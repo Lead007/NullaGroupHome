@@ -37,3 +37,11 @@ function getKotoriTechTitle() {
 function setKotoriTechTitle(secondKotoriTechTitle) {
     document.title = secondKotoriTechTitle + getKotoriTechTitle();
 }
+
+//RailGun标题
+function getRailGunTitle() {
+    return " - RailGun，只为让你在MC的工业世界中发射电磁炮而制造";
+}
+function setRailGunTitle(secondRailGunTitle) {
+    document.title = secondRailGunTitle + getRailGunTitle();
+}

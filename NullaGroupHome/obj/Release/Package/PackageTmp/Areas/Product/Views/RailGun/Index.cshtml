@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "主页";
+    Layout = "~/Areas/Product/Views/Shared/Product/_LayoutRailGun.cshtml";
+}
+
+<script>
+    $("#MenuHome").addClass("active");
+</script>
+<div class="Text">
+    <img src="/Areas/Product/Content/Image/Icon/RailGun.jpg" alt="Icon" height="150" width="450" />
+    <br />
+    <h3>RailGun简介</h3>
+    <hr />
+    <p>RailGun是由Nulla小组组长@(MemberUri.GetMemberUri(Html, Administrator.小鸟小姐))开发制作的Minecraft Mod，面向Minecraft 1.7.10，基于Forge API和IndustrialCraft。</p>
+    <p>原作者的话：</p>
+    <p>只为让你在MC的工业世界中发射电磁炮而制造！</p>
+    <p>一切为了装逼！【棒读</p>
+    <p>@Html.ActionLink("<<去往下载页", "Download", "Home", new { area = "Product", modname = "RailGun" }, null)</p>
+    <p>@Html.ActionLink("<<去往图库页", "Image", "Home", new { area = "Product", modname = "RailGun" }, null)</p>
+</div>
+
+
+

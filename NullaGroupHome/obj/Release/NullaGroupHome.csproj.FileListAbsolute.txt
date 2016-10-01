@@ -39,3 +39,7 @@ D:\Program\C#程序\GitHub\NullaGroupHome\NullaGroupHome\obj\Release\NullaGroupH
 D:\Program\C#程序\GitHub\NullaGroupHome\NullaGroupHome\obj\Release\NullaGroupHome.dll
 D:\Program\C#程序\GitHub\NullaGroupHome\NullaGroupHome\obj\Release\NullaGroupHome.pdb
 D:\Program\C#程序\GitHub\NullaGroupHome\NullaGroupHome\obj\Release\NullaGroupHome.csprojResolveAssemblyReference.cache
+D:\Program\C#程序\GitHub\NullaGroupHome\NullaGroupHome\bin\EntityFramework.dll
+D:\Program\C#程序\GitHub\NullaGroupHome\NullaGroupHome\bin\EntityFramework.SqlServer.dll
+D:\Program\C#程序\GitHub\NullaGroupHome\NullaGroupHome\bin\EntityFramework.xml
+D:\Program\C#程序\GitHub\NullaGroupHome\NullaGroupHome\bin\EntityFramework.SqlServer.xml

@@ -34,7 +34,7 @@ namespace NullaGroupHome.Areas.Product.Controllers
             }
             var model =
                 Directory.GetDirectories(Server.MapPath($"/Areas/Product/Files/{modname}"))
-                    .Select(dire => new DownloadGameVersion(Server, modname, Path.GetFileName(dire)));
+                    .Select(dire => new DownloadGameVersion(Server, _modInfoDb, modname, Path.GetFileName(dire)));
             return View(model);
         }
 

@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = "~/Areas/Product/Views/Shared/_LayoutProduct.cshtml";
+
+}
+
+<script>
+    setRailGunTitle("@ViewBag.Title");
+</script>
+<div>
+    @RenderBody()
+</div>
+
+@section Navbar
+{
+    <li>
+        <a href="/Product/RailGun" target="_blank">
+            <img src="/Areas/Product/Content/Image/Icon/RailGun.jpg" height="80px" width="120px" />
+        </a>
+    </li>
+<li id="MenuHome">@Html.ActionLink("简 介", "Index", "RailGun", new { area = "Product" }, null)</li>
+<li id="MenuDownload">@Html.ActionLink("下 载", "Download", "Home", new { area = "Product", modname = "RailGun" }, null)</li>
+<li id="MenuImage">@Html.ActionLink("图 片", "Image", "Home", new { area = "Product", modname = "RailGun" }, null)</li>
+}

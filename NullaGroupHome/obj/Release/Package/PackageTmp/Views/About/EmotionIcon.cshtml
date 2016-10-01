@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<NullaGroupHome.Models.EmotionIcon>
 @{
     ViewBag.Title = "原创表情包";
     Layout = "~/Views/Shared/_LayoutAbout.cshtml";
@@ -11,7 +11,7 @@
 <div class="Text">
     <h3>组长的原创表情包集锦</h3>
     <hr />
-    <p>众所周知，组长@(MemberUri.GetMemberUri(Html,Administrator.小鸟小姐))对素材的绘制非常美(ling)观(hun)。组长本人显然也明白这一点，因此倾情为大家奉献了许多灵魂化的仿制表情包。</p>
+    <p>众所周知，组长@(MemberUri.GetMemberUri(Html, Administrator.小鸟小姐))对素材的绘制非常美(ling)观(hun)。组长本人显然也明白这一点，因此倾情为大家奉献了许多灵魂化的仿制表情包。</p>
     <p><del>显然，组长在这方面的执行力远大于填坑时的执行力。</del></p>
     <div style="text-align: center">
         <table class="table table-bordered table-hover">
@@ -22,37 +22,31 @@
                 </tr>
             </thead>
             <tbody>
-                @{
-                    var emotions = Directory.GetFiles(this.Server.MapPath("/Content/_MyImages/About/Emotions/Emotion")).OrderBy(File.GetCreationTime).Select(Path.GetFileName);
-                    foreach (var emotion in emotions)
-                    {
-                        <tr>
-                            <td>
-                                @if (File.Exists(this.Server.MapPath($"/Content/_MyImages/About/Emotions/Template/{emotion}")))
-                                {
-                                    <img src="/Content/_MyImages/About/Emotions/Template/@emotion" width="100px" height="100px" />
-                                }
-                                else if (File.Exists(this.Server.MapPath($"/Content/_MyImages/About/Emotions/Template/{emotion}".Replace(".jpg", ".gif"))))
-                                {
-                                    <img src="/Content/_MyImages/About/Emotions/Template/@emotion.Replace(".jpg",".gif")" width="100px" height="100px" />
-                                }
-                                else
-                                {
-                                    <div style="margin-top: 35px;">
-                                        <span class="label label-primary" style="font-size: 20px; margin-top: 35px;">找不到原表情</span>
-                                    </div>
-                                }
-                            </td>
-                            <td>
-                                <img src="/Content/_MyImages/About/Emotions/Emotion/@emotion" width="100px" height="100px" />
-                            </td>
-                        </tr>
-                    }
+                @foreach (var emotion in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (emotion.Template == null || emotion.Template.Length == 0)
+                            {
+                                <div style="margin-top: 35px;">
+                                    <span class="label label-primary" style="font-size: 20px; margin-top: 35px;">找不到原表情</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <img src="/About/GetEmotionTemplate/@emotion.Id" width="100px" height="100px"/>
+                            }
+                        </td>
+                        <td>
+                            <img src="/About/GetEmotionIcon/@emotion.Id" width="100px" height="100px"/>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
         <br />
-        <p>你也可以在这里下载全套表情压缩包。@(Html.ActionLink("ZIP版", "EmotionIconZipDownload", "About", new { area = "" }, null))。</p>
+        <p>你也可以在这里下载全套表情压缩包。@(Html.ActionLink("ZIP版", "EmotionIconZipDownload", "About", new {area = ""}, null)) <a>EIF版（正在开发中）</a>。</p>
         <p class="emphasize">本表情包由组长@(MemberUri.GetMemberUri(Html, Administrator.小鸟小姐))原创，请勿随意转载！</p>
+        @Html.ActionLink("上传新表情", "UploadEmotionIcon", "About", null, new { @class = "btn btn-primary" })
     </div>
 </div>

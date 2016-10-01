@@ -1,11 +1,8 @@
-﻿@using NullaGroupHome.Areas.Product
+﻿@model IEnumerable<NullaGroupHome.Models.ModImage>
+@using NullaGroupHome.Areas.Product
 
 @{
     var modname = this.Request.Params["modname"];
-    if (!Directory.Exists(this.Server.MapPath($"~/Areas/Product/Content/Image") + $"\\{modname}") || string.IsNullOrEmpty(modname))
-    {
-        throw new ModInexistenceException(modname);
-    }
     ViewBag.Title = "图库";
     Layout = $"~/Areas/Product/Views/Shared/Product/_Layout{modname}.cshtml";
 }
@@ -17,33 +14,26 @@
     <h4>以下为@(modname)图库：</h4>
     <hr />
     <div>
-        @{
-            var mappath = $"/Areas/Product/Content/Image/{modname}/_Images";
-            var files = Directory.GetFiles(this.Server.MapPath(mappath)).Select(Path.GetFileName).OrderBy(file => DateTimeHelper.ParseDateTime(file.Split(new[] { '_' }, 4)[1]));
-            if (!files.Any())
-            {
-                <p>
-                    <del>由于组内成员的拖延症，暂时没有图片。</del>
-                    <img src="/Content/_MyImages/_Global/噫于言表.jpg" alt="噫于言表" />
-                </p>
-            }
-            else
-            {
-                foreach (var file in files)
-                {
-                    <img src="@mappath/@file" height="60%" width="60%" />
-                    <br />
-                    <p>
-                        @{
-                            var infos = file.Split(new[] { '_' }, 4);
-                        }
-                        @infos[3].Substring(0, infos[3].LastIndexOf('.'))
-                        <br />
-                        <i style="color: gray;">@(infos[2]) 上传于@(DateTimeHelper.ToString(infos[1]))</i>
-                    </p>
-                    <hr />
-                                }
-                            }
+        @if (!Model.Any())
+        {
+            <p>
+                <del>由于组内成员的拖延症，暂时没有图片。</del>
+                <img src="/Content/_MyImages/_Global/噫于言表.jpg" alt="噫于言表" />
+            </p>
         }
+        else
+        {
+            foreach (var file in Model)
+            {
+                <img src="/Product/Home/GetImage/@file.Id" height="60%" width="60%" />
+                <br />
+                <p style="margin-bottom: 0;">@(file.Information ?? string.Empty)</p>
+                <i style="color: gray;">@(file.Uploader)上传于@(file.UploadDate.ToShortDateString())</i>
+                <hr />
+            }
+        }
+        <div style="margin-top: 50px;">
+            @Html.ActionLink("上传图片", "UploadModImage", "Home", null, new { @class = "btn btn-primary" })
+        </div>
     </div>
 </div>

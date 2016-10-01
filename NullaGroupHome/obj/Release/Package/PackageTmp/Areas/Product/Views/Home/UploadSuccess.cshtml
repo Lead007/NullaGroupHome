@@ -1,0 +1,7 @@
+﻿
+@{
+    ViewBag.Title = "上传成功";
+    Layout = "~/Views/Shared/_LayoutUploadSuccess.cshtml";
+}
+
+@Html.ActionLink("返回原图片页", "Image", "Home", new { modname = this.Request.Params["modname"] }, new { @class = "btn btn-primary" })

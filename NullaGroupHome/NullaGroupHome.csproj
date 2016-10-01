@@ -115,13 +115,13 @@
     <Content Include="Areas\Product\Content\Image\Icon\KeyCraft.jpg" />
     <Content Include="Areas\Product\Content\Image\Icon\KotoriTech.jpg" />
     <Content Include="Areas\Product\Content\Image\Icon\NullaCore.jpg" />
+    <Content Include="Areas\Product\Content\Image\Icon\RailGun.jpg" />
     <Content Include="Areas\Product\Content\_Content\ProductList.css" />
     <Content Include="Areas\Product\Content\_Content\ProductList.min.css">
       <DependentUpon>ProductList.css</DependentUpon>
     </Content>
     <Content Include="Areas\Product\Files\BetterHUD\1.7.10\BetterHUD - Pre 1.1.jar" />
     <Content Include="Areas\Product\Files\KeyCraft\1.7.10 Rewrite\KeyCraftRewrite - Demo 1.0.0.jar" />
-    <Content Include="Areas\Product\Files\KeyCraft\1.7.10 Rewrite\VersionInfo.xml" />
     <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 1.4.3.jar" />
     <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 2.1.2.jar" />
     <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Demo 2.4.3.jar" />
@@ -134,8 +134,8 @@
     <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Pre 1.0.jar" />
     <Content Include="Areas\Product\Files\KeyCraft\1.7.10\KeyCraft - Pre 1.0β.jar" />
     <Content Include="Areas\Product\Files\KotoriTech\1.7.10\KotoriTech - Demo 1.0.0.jar" />
-    <Content Include="Areas\Product\Files\KotoriTech\1.7.10\VersionInfo.xml" />
     <Content Include="Areas\Product\Files\NullaCore\1.7.10\NullaCore - Pre 1.0.0.jar" />
+    <Content Include="Areas\Product\Files\RailGun\1.7.10\Railgun - Demo 1.0.0.jar" />
     <Content Include="Areas\Product\Scripts\DownloadTableHead.js" />
     <Content Include="Areas\Product\Scripts\DownloadTableHead.min.js">
       <DependentUpon>DownloadTableHead.js</DependentUpon>
@@ -192,49 +192,6 @@
     <Content Include="Content\_MyImages\About\Administrators\不穿女装的玛秾.jpg" />
     <Content Include="Content\_MyImages\About\Administrators\女仆长的PAD.jpg" />
     <Content Include="Content\_MyImages\About\Administrators\小大圣.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\001.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\002.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\003.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\004.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\005.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\006.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\007.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\008.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\009.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\010.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\011.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\012.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\013.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\014.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\015.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\016.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\017.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\018.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\019.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\020.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\021.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\022.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\023.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Emotion\024.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\001.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\004.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\005.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\006.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\007.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\009.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\010.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\013.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\014.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\016.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\017.gif" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\018.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\019.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\020.gif" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\021.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\022.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\023.jpg" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\024.gif" />
-    <Content Include="Content\_MyImages\About\Emotions\Template\011.jpg" />
     <Content Include="Content\_MyImages\About\TimeLineNodes\Node0.jpg" />
     <Content Include="Content\_MyImages\About\TimeLineNodes\Node1.jpg" />
     <Content Include="Content\_MyImages\About\警告.jpg" />
@@ -278,6 +235,8 @@
     <Content Include="Views\Home\ValidatePassword.cshtml" />
     <Content Include="Areas\Product\Views\Home\UploadModImage.cshtml" />
     <Content Include="Areas\Product\Views\Home\UploadSuccess.cshtml" />
+    <Content Include="Areas\Product\Views\Shared\Product\_LayoutRailGun.cshtml" />
+    <Content Include="Areas\Product\Views\RailGun\Index.cshtml" />
     <None Include="bundleconfig.json" />
     <EntityDeploy Include="Models\ModInfo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -325,6 +284,7 @@
   <ItemGroup>
     <Compile Include="Areas\Product\Codes\Comparer.cs" />
     <Compile Include="Areas\Product\Codes\ProductExceptionInfo.cs" />
+    <Compile Include="Areas\Product\Controllers\RailGunController.cs" />
     <Compile Include="Areas\Product\ViewModel\ModFile.cs" />
     <Compile Include="Areas\Product\Codes\ModInexistenceException.cs" />
     <Compile Include="Areas\Product\ViewModel\ModFileWithPreposition.cs" />
@@ -417,6 +377,7 @@
     <Folder Include="Areas\Product\Controllers\KeyCraft\" />
     <Folder Include="Areas\Product\Controllers\KotoriTech\" />
     <Folder Include="Areas\Product\Controllers\NullaCore\" />
+    <Folder Include="Areas\Product\Controllers\RainGun\" />
     <Folder Include="Areas\Product\Models\" />
     <Folder Include="Views\Global\" />
   </ItemGroup>
