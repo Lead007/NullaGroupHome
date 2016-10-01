@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModInfoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EmotionIcons">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Template" Type="image" />
+    <Property Name="TemplateExtension" Type="nvarchar" MaxLength="10" />
+    <Property Name="Emotion" Type="image" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ModImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModId" Type="int" Nullable="false" />
+    <Property Name="Uploader" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="UploadDate" Type="date" Nullable="false" />
+    <Property Name="Information" Type="nvarchar" MaxLength="100" />
+    <Property Name="Image" Type="image" />
+  </EntityType>
+  <EntityType Name="ModName">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VersionInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModId" Type="int" Nullable="false" />
+    <Property Name="GameVersion" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="VersionType" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Version" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="PrepositionModName" Type="nvarchar" MaxLength="30" />
+    <Property Name="PrepositionType" Type="nvarchar" MaxLength="5" />
+    <Property Name="PrepositionVersion" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_ModImages_ModName">
+    <End Role="ModName" Type="Self.ModName" Multiplicity="1" />
+    <End Role="ModImages" Type="Self.ModImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModName">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ModImages">
+        <PropertyRef Name="ModId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VersionInfo_ModName">
+    <End Role="ModName" Type="Self.ModName" Multiplicity="1" />
+    <End Role="VersionInfo" Type="Self.VersionInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModName">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VersionInfo">
+        <PropertyRef Name="ModId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModInfoModelStoreContainer">
+    <EntitySet Name="EmotionIcons" EntityType="Self.EmotionIcons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ModImages" EntityType="Self.ModImages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ModName" EntityType="Self.ModName" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VersionInfo" EntityType="Self.VersionInfo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ModImages_ModName" Association="Self.FK_ModImages_ModName">
+      <End Role="ModName" EntitySet="ModName" />
+      <End Role="ModImages" EntitySet="ModImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VersionInfo_ModName" Association="Self.FK_VersionInfo_ModName">
+      <End Role="ModName" EntitySet="ModName" />
+      <End Role="VersionInfo" EntitySet="VersionInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

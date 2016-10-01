@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "上传新表情";
+    Layout = "~/Views/Shared/_LayoutAbout.cshtml";
+}
+
+<!--自己的css和js-->
+<link rel="stylesheet" href="/Content/_MyContent/_Global/Form.min.css" />
+<script src="/Scripts/_MyScripts/_Global/FileExtensionHelper.min.js"></script>
+<style>
+    .my-form input[type='file'] {
+        display: inline-block;
+        width: 50%;
+    }
+</style>
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="col-sm-8 col-sm-push-1">
+        @if (!this.Request.HasValidatedPassword())
+        {
+            <p>
+                <img src="/Content/_MyImages/_Global/噫于言表.jpg" />
+                <span>你还没有验证。</span>
+            </p>
+            @Html.ActionLink("前往验证", "ValidatePassword", "Home", new { area = "", targetarea = "", targetcontroller = "About", targetaction = "UploadEmotionIcon" }, new { @class = "btn btn-danger" })
+        }
+        else
+        {
+            using (Html.BeginForm("EmotionIconUploader", "About", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <fieldset class="my-form">
+                    <legend>表情上传</legend>
+                    <div id="template">
+                        <label>原表情：</label>
+                        <input type="file" name="template"/>
+                    </div>
+                    <div id="emotion">
+                        <label>原创表情：</label>
+                        <input type="file" name="emotion" />
+                    </div>
+                    <input type="submit" value="上传" class="btn btn-primary" />
+                </fieldset>
+            }
+        }
+    </div>
+</div>
+<script>
+    var extensions = new Array();
+    extensions.push("jpg");
+    extensions.push("gif");
+    $("form").submit(function (event) {
+        $("p").remove(".form-error");
+        if (!($("input[name='template']").val() === "")) {
+            if (!JudgeFileExtension(extensions, $("input[name='template']"))) {
+                $("#template").append($("<p>上传图片格式错误</p>").addClass("form-error"));
+                event.preventDefault();
+                return;
+            }
+        }
+        if ($("input[name='emotion']").val() === "") {
+            $("#emotion").append($("<p>还未上传图片</p>").addClass("form-error"));
+            event.preventDefault();
+            return;
+        }
+        if (!JudgeFileExtension(extensions, $("input[name='emotion']"))) {
+            $("#emotion").append($("<p>上传图片格式错误</p>").addClass("form-error"));
+            event.preventDefault();
+            return;
+        }
+    });
+</script>
+

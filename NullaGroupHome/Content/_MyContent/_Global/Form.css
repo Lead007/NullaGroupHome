@@ -1,0 +1,23 @@
+﻿.my-form label {
+    display: inline-block;
+    width: 20%;
+    text-align: right;
+}
+
+.my-form > div {
+    margin-top: 20px;
+}
+
+.my-form input[type='file'] {
+    display: inline;
+}
+
+.my-form input[type='submit'] {
+    margin-left: 20%;
+    margin-top: 20px;
+}
+
+.form-error {
+    color: red;
+    margin-left: 20%;
+}

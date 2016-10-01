@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f2184a4905524c47b9ba2d00958d0566" Name="Diagram1">
+        <EntityTypeShape EntityType="ModInfoModel.ModImage" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModInfoModel.ModName" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModInfoModel.VersionInfo" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="ModInfoModel.FK_ModImages_ModName" ManuallyRouted="false" />
+        <AssociationConnector Association="ModInfoModel.FK_VersionInfo_ModName" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ModInfoModel.EmotionIcon" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

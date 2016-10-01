@@ -43,11 +43,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -97,13 +107,14 @@
     <Content Include="App_Data\About\Introductions\女仆长的PAD.txt" />
     <Content Include="App_Data\About\Introductions\小大圣.txt" />
     <Content Include="App_Data\About\Introductions\小鸟小姐.txt" />
-    <Content Include="Areas\Product\Content\Image\BetterHUD\Icon.jpg" />
-    <Content Include="Areas\Product\Content\Image\BetterHUD\_Images\BetterHUD_20160831_PrimeBlade_开启了BetterHUD后的效果.jpg" />
-    <Content Include="Areas\Product\Content\Image\KeyCraft\Icon.jpg" />
-    <Content Include="Areas\Product\Content\Image\KeyCraft\_Images\KeyCraft_20160715_PrimeBlade_技能学习的初代GUI.jpg" />
-    <Content Include="Areas\Product\Content\Image\KotoriTech\Icon.jpg" />
-    <Content Include="Areas\Product\Content\Image\KotoriTech\_Images\KotoriTech_20160903_PrimeBlade_火力蒸汽发电机.jpg" />
-    <Content Include="Areas\Product\Content\Image\NullaCore\Icon.jpg" />
+    <Content Include="App_Data\ModInfo.mdf" />
+    <Content Include="App_Data\ModInfo_log.ldf">
+      <DependentUpon>ModInfo.mdf</DependentUpon>
+    </Content>
+    <Content Include="Areas\Product\Content\Image\Icon\BetterHUD.jpg" />
+    <Content Include="Areas\Product\Content\Image\Icon\KeyCraft.jpg" />
+    <Content Include="Areas\Product\Content\Image\Icon\KotoriTech.jpg" />
+    <Content Include="Areas\Product\Content\Image\Icon\NullaCore.jpg" />
     <Content Include="Areas\Product\Content\_Content\ProductList.css" />
     <Content Include="Areas\Product\Content\_Content\ProductList.min.css">
       <DependentUpon>ProductList.css</DependentUpon>
@@ -158,6 +169,10 @@
       <DependentUpon>ExceptionString.css</DependentUpon>
     </Content>
     <Content Include="Content\_MyContent\_Global\Footer.css" />
+    <Content Include="Content\_MyContent\_Global\Form.css" />
+    <Content Include="Content\_MyContent\_Global\Form.min.css">
+      <DependentUpon>Form.css</DependentUpon>
+    </Content>
     <Content Include="Content\_MyContent\_Global\Head.min.css">
       <DependentUpon>Head.css</DependentUpon>
     </Content>
@@ -225,6 +240,7 @@
     <Content Include="Content\_MyImages\About\警告.jpg" />
     <Content Include="Content\_MyImages\Home\Introduction.jpg" />
     <Content Include="Content\_MyImages\Home\Products.jpg" />
+    <Content Include="Content\_MyImages\_Global\目瞪口交.jpg" />
     <Content Include="Content\_MyImages\_Global\出错了.jpg" />
     <Content Include="Content\_MyImages\_Global\Nulla.jpg" />
     <Content Include="Content\_MyImages\_Global\噫于言表.jpg" />
@@ -255,9 +271,33 @@
     <Content Include="Areas\Product\Views\Shared\Product\_LayoutNullaCore.cshtml" />
     <Content Include="Areas\Product\Views\Shared\Product\_LayoutKotoriTech.cshtml" />
     <Content Include="Areas\Product\Views\KotoriTech\Index.cshtml" />
+    <Content Include="Scripts\_MyScripts\_Global\FileExtensionHelper.js" />
+    <Content Include="Scripts\_MyScripts\_Global\FileExtensionHelper.min.js">
+      <DependentUpon>FileExtensionHelper.js</DependentUpon>
+    </Content>
+    <Content Include="Views\Home\ValidatePassword.cshtml" />
+    <Content Include="Areas\Product\Views\Home\UploadModImage.cshtml" />
+    <Content Include="Areas\Product\Views\Home\UploadSuccess.cshtml" />
     <None Include="bundleconfig.json" />
+    <EntityDeploy Include="Models\ModInfo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModInfo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModInfo.edmx.diagram">
+      <DependentUpon>ModInfo.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\NullaConfig.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="Models\ModInfo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModInfo.edmx</DependentUpon>
+      <LastGenOutput>ModInfo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModInfo.edmx</DependentUpon>
+      <LastGenOutput>ModInfo.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
@@ -284,17 +324,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Product\Codes\Comparer.cs" />
-    <Compile Include="Areas\Product\Codes\DateTimeHelper.cs" />
     <Compile Include="Areas\Product\Codes\ProductExceptionInfo.cs" />
-    <Compile Include="Areas\Product\Codes\ModFile.cs" />
+    <Compile Include="Areas\Product\ViewModel\ModFile.cs" />
     <Compile Include="Areas\Product\Codes\ModInexistenceException.cs" />
-    <Compile Include="Areas\Product\Codes\Version.cs" />
+    <Compile Include="Areas\Product\ViewModel\ModFileWithPreposition.cs" />
+    <Compile Include="Areas\Product\ViewModel\Version.cs" />
     <Compile Include="Areas\Product\Controllers\BetterHUDController.cs" />
     <Compile Include="Areas\Product\Controllers\HomeController.cs" />
     <Compile Include="Areas\Product\Controllers\KeyCraftController.cs" />
     <Compile Include="Areas\Product\Controllers\KotoriTechController.cs" />
     <Compile Include="Areas\Product\Controllers\NullaCoreController.cs" />
     <Compile Include="Areas\Product\ProductAreaRegistration.cs" />
+    <Compile Include="Areas\Product\ViewModel\DownloadGameVersion.cs" />
     <Compile Include="Codes\FileHelper.cs" />
     <Compile Include="Codes\MemberUri.cs" />
     <Compile Include="Codes\ConstFields.cs" />
@@ -303,11 +344,39 @@
     <Compile Include="Codes\About\TimeLineEvent.cs" />
     <Compile Include="Codes\About\AdministratorInfo.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Codes\ValidateHelper.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\GlobalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmotionIcon.cs">
+      <DependentUpon>ModInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModImage.cs">
+      <DependentUpon>ModInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModInfo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModInfo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModInfo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModName.cs">
+      <DependentUpon>ModInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VersionInfo.cs">
+      <DependentUpon>ModInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -333,6 +402,9 @@
     <Content Include="Views\Shared\_LayoutException.cshtml" />
     <Content Include="Areas\Product\Views\Home\ExceptionPage.cshtml" />
     <Content Include="Views\Home\NotFound.cshtml" />
+    <Content Include="Views\Shared\_LayoutUploadSuccess.cshtml" />
+    <Content Include="Views\About\UploadEmotionIcon.cshtml" />
+    <Content Include="Views\About\UploadSuccess.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -346,7 +418,6 @@
     <Folder Include="Areas\Product\Controllers\KotoriTech\" />
     <Folder Include="Areas\Product\Controllers\NullaCore\" />
     <Folder Include="Areas\Product\Models\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Global\" />
   </ItemGroup>
   <ItemGroup>
@@ -358,6 +429,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Resources\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

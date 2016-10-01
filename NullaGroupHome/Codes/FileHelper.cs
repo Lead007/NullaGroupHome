@@ -26,5 +26,12 @@ namespace NullaGroupHome
             if (num >= 100) return ((int) Math.Round(num)).ToString();
             return num.ToString(num >= 10 ? "F1" : "F");
         }
+
+        public static byte[] GetBytes(this Stream stream)
+        {
+            var bytes = new byte[stream.Length];
+            stream.Read(bytes, 0, bytes.Length);
+            return bytes;
+        }
     }
 }

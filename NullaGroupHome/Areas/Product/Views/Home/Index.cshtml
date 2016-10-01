@@ -60,7 +60,7 @@
                     {
                         <div class="row" style="padding-top: 20px;">
                             <div class="col-sm-4">
-                                <img src="/Areas/Product/Content/Image/@(modNameTuple.Item1)/Icon.jpg" height="80px" width="200px"/>
+                                <img src="/Areas/Product/Content/Image/Icon/@(modNameTuple.Item1).jpg" height="80px" width="200px"/>
                                 <br/>
                                 <br/>
                                 @Html.ActionLink("查看主页", "Index", modNameTuple.Item1, new {area = "Product"}, new {@class = "btn btn-primary", style = "margin-right: 5px;"})
@@ -69,7 +69,7 @@
                             @if (modNameTuple.Item2 != null)
                             {
                                 <div class="col-sm-4">
-                                    <img src="/Areas/Product/Content/Image/@(modNameTuple.Item2)/Icon.jpg" height="80px" width="200px" />
+                                    <img src="/Areas/Product/Content/Image/Icon/@(modNameTuple.Item2).jpg" height="80px" width="200px" />
                                     <br />
                                     <br />
                                     @Html.ActionLink("查看主页", "Index", modNameTuple.Item2, new { area = "Product" }, new { @class = "btn btn-primary", style = "margin-right: 5px;" })

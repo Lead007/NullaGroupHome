@@ -1,0 +1,80 @@
+﻿@*模型为mod名称列表*@
+@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "Mod图片上传";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<!--自己的css和js-->
+<link rel="stylesheet" href="/Content/_MyContent/_Global/Form.min.css" />
+<script src="/Scripts/_MyScripts/_Global/FileExtensionHelper.min.js"></script>
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="col-sm-10 col-sm-push-2">
+        @if (!this.Request.HasValidatedPassword())
+        {
+            <p>
+                <img src="/Content/_MyImages/_Global/噫于言表.jpg" />
+                <span>你还没有验证。</span>
+            </p>
+            @Html.ActionLink("前往验证", "ValidatePassword", "Home", new { area = "", targetarea = "Product", targetcontroller = "Home", targetaction = "UploadModImage" }, new { @class = "btn btn-danger" })
+        }
+        else
+        {
+            using (Html.BeginForm("ModImageUploader", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <fieldset class="my-form">
+                    <legend>Mod图片上传</legend>
+                    <div>
+                        <label>Mod名称：</label>
+                        @Html.DropDownList("modname", Model.Select(modname => new SelectListItem { Text = modname, Value = modname }))
+                    </div>
+                    <div id="uploader">
+                        <label>上传者：</label>
+                        @Html.TextBox("uploader", string.Empty, new { list = "uploader-list" })
+                        <datalist id="uploader-list">
+                            @foreach (var uploader in Enum.GetNames(typeof(Administrator)))
+                            {
+                                <option text="@uploader" value="@uploader"></option>
+                            }
+                        </datalist>
+                    </div>
+                    <div>
+                        <label>描述：</label>
+                        @Html.TextArea("information", new { rows = 2, cols = 60, placeholder = "请输入图片描述" })
+                    </div>
+                    <div id="image">
+                        <label>图片：</label>
+                        <input type="file" name="image" />
+                    </div>
+                    <input type="submit" value="上传" class="btn btn-primary" />
+                </fieldset>
+            }
+        }
+    </div>
+</div>
+<script>
+    $("form").submit(function (event) {
+        $("p").remove(".form-error");
+        if ($("input[name='uploader']").val() === "") {
+            $("#uploader").append($("<p>还未输入上传者</p>").addClass("form-error"));
+            event.preventDefault();
+            return;
+        }
+        if ($(":file").val() === "") {
+            $("#image").append($("<p>还未上传图片</p>").addClass("form-error"));
+            event.preventDefault();
+            return;
+        }
+        var extensions = new Array();
+        extensions.push("jpg");
+        if (!JudgeFileExtension(extensions)) {
+            $("#image").append($("<p>上传图片格式错误</p>").addClass("form-error"));
+            event.preventDefault();
+            return;
+        }
+    });
+</script>

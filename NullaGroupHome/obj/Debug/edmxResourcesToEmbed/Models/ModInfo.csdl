@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModInfoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ModImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModId" Type="Int32" Nullable="false" />
+    <Property Name="Uploader" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UploadDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Information" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="ModName" Relationship="Self.FK_ModImages_ModName" FromRole="ModImages" ToRole="ModName" />
+  </EntityType>
+  <EntityType Name="ModName">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ModImages" Relationship="Self.FK_ModImages_ModName" FromRole="ModName" ToRole="ModImages" />
+    <NavigationProperty Name="VersionInfoes" Relationship="Self.FK_VersionInfo_ModName" FromRole="ModName" ToRole="VersionInfo" />
+  </EntityType>
+  <EntityType Name="VersionInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModId" Type="Int32" Nullable="false" />
+    <Property Name="GameVersion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="VersionType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PrepositionModName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PrepositionType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="PrepositionVersion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ModName" Relationship="Self.FK_VersionInfo_ModName" FromRole="VersionInfo" ToRole="ModName" />
+  </EntityType>
+  <Association Name="FK_ModImages_ModName">
+    <End Role="ModName" Type="Self.ModName" Multiplicity="1" />
+    <End Role="ModImages" Type="Self.ModImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModName">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ModImages">
+        <PropertyRef Name="ModId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VersionInfo_ModName">
+    <End Role="ModName" Type="Self.ModName" Multiplicity="1" />
+    <End Role="VersionInfo" Type="Self.VersionInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModName">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VersionInfo">
+        <PropertyRef Name="ModId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModInfoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ModImages" EntityType="Self.ModImage" />
+    <EntitySet Name="ModNames" EntityType="Self.ModName" />
+    <EntitySet Name="VersionInfoes" EntityType="Self.VersionInfo" />
+    <AssociationSet Name="FK_ModImages_ModName" Association="Self.FK_ModImages_ModName">
+      <End Role="ModName" EntitySet="ModNames" />
+      <End Role="ModImages" EntitySet="ModImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VersionInfo_ModName" Association="Self.FK_VersionInfo_ModName">
+      <End Role="ModName" EntitySet="ModNames" />
+      <End Role="VersionInfo" EntitySet="VersionInfoes" />
+    </AssociationSet>
+    <EntitySet Name="EmotionIcons" EntityType="ModInfoModel.EmotionIcon" />
+  </EntityContainer>
+  <EntityType Name="EmotionIcon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Template" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="TemplateExtension" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Emotion" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+</Schema>

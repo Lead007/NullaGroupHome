@@ -91,5 +91,23 @@
     "inputFiles": [
       "Areas/Product/Scripts/DownloadTableHead.js"
     ]
+  },
+  {
+    "outputFileName": "Scripts/jquery.form.min.js",
+    "inputFiles": [
+      "Scripts/jquery.form.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/_MyContent/_Global/Form.min.css",
+    "inputFiles": [
+      "Content/_MyContent/_Global/Form.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/_MyScripts/_Global/FileExtensionHelper.min.js",
+    "inputFiles": [
+      "Scripts/_MyScripts/_Global/FileExtensionHelper.js"
+    ]
   }
 ]

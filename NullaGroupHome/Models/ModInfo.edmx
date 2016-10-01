@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModInfoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EmotionIcons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Template" Type="image" />
+          <Property Name="TemplateExtension" Type="nvarchar" MaxLength="10" />
+          <Property Name="Emotion" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ModImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModId" Type="int" Nullable="false" />
+          <Property Name="Uploader" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UploadDate" Type="date" Nullable="false" />
+          <Property Name="Information" Type="nvarchar" MaxLength="100" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="ModName">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VersionInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModId" Type="int" Nullable="false" />
+          <Property Name="GameVersion" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="VersionType" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Version" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="PrepositionModName" Type="nvarchar" MaxLength="30" />
+          <Property Name="PrepositionType" Type="nvarchar" MaxLength="5" />
+          <Property Name="PrepositionVersion" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_ModImages_ModName">
+          <End Role="ModName" Type="Self.ModName" Multiplicity="1" />
+          <End Role="ModImages" Type="Self.ModImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModName">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ModImages">
+              <PropertyRef Name="ModId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VersionInfo_ModName">
+          <End Role="ModName" Type="Self.ModName" Multiplicity="1" />
+          <End Role="VersionInfo" Type="Self.VersionInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModName">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VersionInfo">
+              <PropertyRef Name="ModId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModInfoModelStoreContainer">
+          <EntitySet Name="EmotionIcons" EntityType="Self.EmotionIcons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModImages" EntityType="Self.ModImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModName" EntityType="Self.ModName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VersionInfo" EntityType="Self.VersionInfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ModImages_ModName" Association="Self.FK_ModImages_ModName">
+            <End Role="ModName" EntitySet="ModName" />
+            <End Role="ModImages" EntitySet="ModImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VersionInfo_ModName" Association="Self.FK_VersionInfo_ModName">
+            <End Role="ModName" EntitySet="ModName" />
+            <End Role="VersionInfo" EntitySet="VersionInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModInfoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ModImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModId" Type="Int32" Nullable="false" />
+          <Property Name="Uploader" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UploadDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Information" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ModName" Relationship="Self.FK_ModImages_ModName" FromRole="ModImages" ToRole="ModName" />
+        </EntityType>
+        <EntityType Name="ModName">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ModImages" Relationship="Self.FK_ModImages_ModName" FromRole="ModName" ToRole="ModImages" />
+          <NavigationProperty Name="VersionInfoes" Relationship="Self.FK_VersionInfo_ModName" FromRole="ModName" ToRole="VersionInfo" />
+        </EntityType>
+        <EntityType Name="VersionInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModId" Type="Int32" Nullable="false" />
+          <Property Name="GameVersion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VersionType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrepositionModName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PrepositionType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="PrepositionVersion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ModName" Relationship="Self.FK_VersionInfo_ModName" FromRole="VersionInfo" ToRole="ModName" />
+        </EntityType>
+        <Association Name="FK_ModImages_ModName">
+          <End Role="ModName" Type="Self.ModName" Multiplicity="1" />
+          <End Role="ModImages" Type="Self.ModImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModName">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ModImages">
+              <PropertyRef Name="ModId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VersionInfo_ModName">
+          <End Role="ModName" Type="Self.ModName" Multiplicity="1" />
+          <End Role="VersionInfo" Type="Self.VersionInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModName">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VersionInfo">
+              <PropertyRef Name="ModId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModInfoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ModImages" EntityType="Self.ModImage" />
+          <EntitySet Name="ModNames" EntityType="Self.ModName" />
+          <EntitySet Name="VersionInfoes" EntityType="Self.VersionInfo" />
+          <AssociationSet Name="FK_ModImages_ModName" Association="Self.FK_ModImages_ModName">
+            <End Role="ModName" EntitySet="ModNames" />
+            <End Role="ModImages" EntitySet="ModImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VersionInfo_ModName" Association="Self.FK_VersionInfo_ModName">
+            <End Role="ModName" EntitySet="ModNames" />
+            <End Role="VersionInfo" EntitySet="VersionInfoes" />
+          </AssociationSet>
+          <EntitySet Name="EmotionIcons" EntityType="ModInfoModel.EmotionIcon" />
+        </EntityContainer>
+        <EntityType Name="EmotionIcon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Template" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TemplateExtension" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Emotion" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModInfoModelStoreContainer" CdmEntityContainer="ModInfoEntities">
+          <EntitySetMapping Name="ModImages">
+            <EntityTypeMapping TypeName="ModInfoModel.ModImage">
+              <MappingFragment StoreEntitySet="ModImages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ModId" ColumnName="ModId" />
+                <ScalarProperty Name="Uploader" ColumnName="Uploader" />
+                <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+                <ScalarProperty Name="Information" ColumnName="Information" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModNames">
+            <EntityTypeMapping TypeName="ModInfoModel.ModName">
+              <MappingFragment StoreEntitySet="ModName">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VersionInfoes">
+            <EntityTypeMapping TypeName="ModInfoModel.VersionInfo">
+              <MappingFragment StoreEntitySet="VersionInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ModId" ColumnName="ModId" />
+                <ScalarProperty Name="GameVersion" ColumnName="GameVersion" />
+                <ScalarProperty Name="VersionType" ColumnName="VersionType" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="PrepositionModName" ColumnName="PrepositionModName" />
+                <ScalarProperty Name="PrepositionType" ColumnName="PrepositionType" />
+                <ScalarProperty Name="PrepositionVersion" ColumnName="PrepositionVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmotionIcons">
+            <EntityTypeMapping TypeName="ModInfoModel.EmotionIcon">
+              <MappingFragment StoreEntitySet="EmotionIcons">
+                <ScalarProperty Name="Emotion" ColumnName="Emotion" />
+                <ScalarProperty Name="TemplateExtension" ColumnName="TemplateExtension" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
