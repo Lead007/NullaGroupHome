@@ -176,6 +176,7 @@
     <Content Include="Content\_MyContent\_Global\Head.min.css">
       <DependentUpon>Head.css</DependentUpon>
     </Content>
+    <Content Include="Content\_MyContent\_Global\Logo.css" />
     <Content Include="Content\_MyContent\_Global\TableHead.min.css">
       <DependentUpon>TableHead.css</DependentUpon>
     </Content>

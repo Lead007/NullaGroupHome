@@ -6,15 +6,6 @@
     ]
   },
   {
-    "outputFileName": "Content/_MyContent/_Global/Global.min.css",
-    "inputFiles": [
-      "Content/_MyContent/_Global/Footer.css",
-      "Content/_MyContent/_Global/Hr.css",
-      "Content/_MyContent/_Global/Navbar.css",
-      "Content/_MyContent/_Global/Text.css"
-    ]
-  },
-  {
     "outputFileName": "Scripts/_MyScripts/_Global/ConstFields.min.js",
     "inputFiles": [
       "Scripts/_MyScripts/_Global/ConstFields.js"
@@ -108,6 +99,16 @@
     "outputFileName": "Scripts/_MyScripts/_Global/FileExtensionHelper.min.js",
     "inputFiles": [
       "Scripts/_MyScripts/_Global/FileExtensionHelper.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/_MyContent/_Global/_Global.min.css",
+    "inputFiles": [
+      "Content/_MyContent/_Global/Footer.css",
+      "Content/_MyContent/_Global/Hr.css",
+      "Content/_MyContent/_Global/Navbar.css",
+      "Content/_MyContent/_Global/Text.css",
+      "Content/_MyContent/_Global/Logo.css"
     ]
   }
 ]
